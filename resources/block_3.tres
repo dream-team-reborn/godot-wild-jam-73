@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Block" load_steps=4 format=3 uid="uid://cti3hvu86lghq"]
 
 [ext_resource type="Script" path="res://resources/block.gd" id="1_3ttwp"]
-[ext_resource type="ArrayMesh" path="res://resources/module_o.res" id="1_sa711"]
+[ext_resource type="ArrayMesh" uid="uid://wbgj7nrxyoxo" path="res://resources/module_o.res" id="1_sa711"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4rlcu"]
 
@@ -9,15 +9,15 @@
 script = ExtResource("1_3ttwp")
 mesh = ExtResource("1_sa711")
 shape = SubResource("ConvexPolygonShape3D_4rlcu")
-cost = 0
+cost = 100
 cost_interval = 0
-income = 0
-income_interval = 0
-population = 0
+income = 10
+income_interval = 1
+population = 10
 population_interval = 0
-food = 0
-food_interval = 0
-water = 0
+food = -10
+food_interval = 10
+water = -10
 water_interval = 0
-fun = 0
+fun = -10
 fun_interval = 0
