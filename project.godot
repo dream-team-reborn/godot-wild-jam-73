@@ -30,6 +30,12 @@ config/icon="res://icon.svg"
 
 GlobalEventBus="*res://scenes/global_event_bus.tscn"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/eventbus/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
