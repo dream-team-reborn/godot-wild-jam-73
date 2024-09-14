@@ -53,5 +53,3 @@ shape = SubResource("BoxShape3D_bmdca")
 [node name="ModuleSpawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 script = ExtResource("1_3ofxf")
-
-[connection signal="visibility_changed" from="ModuleSpawner" to="InputHandler" method="_on_module_spawner_visibility_changed"]
