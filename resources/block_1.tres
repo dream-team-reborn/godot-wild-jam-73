@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Block" load_steps=4 format=3 uid="uid://dk8uggc7s7oqi"]
 
 [ext_resource type="Script" path="res://resources/block.gd" id="1_i05rl"]
-[ext_resource type="ArrayMesh" path="res://resources/module_i.res" id="1_jpvo0"]
+[ext_resource type="ArrayMesh" uid="uid://buydc8gabjbfd" path="res://resources/module_i.res" id="1_jpvo0"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lh20p"]
 

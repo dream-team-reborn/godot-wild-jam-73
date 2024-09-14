@@ -41,6 +41,7 @@ func _on_entered_tree(node: Node) -> void:
 		_blocks[node.get_instance_id()] = module.block
 		for stat in stats:
 			_blocks_checks[str(node.get_instance_id()) + "_" + stat] = 0
+		_send_block_number_change_signal()
 
 func _on_exiting_tree(node: Node) -> void:
 	var module = node as Module
@@ -48,6 +49,10 @@ func _on_exiting_tree(node: Node) -> void:
 		_blocks.erase(node.get_instance_id())
 		for stat in stats:
 			_blocks_checks.erase(str(node.get_instance_id()) + "_" + stat)
+		_send_block_number_change_signal()
 
 func _on_stat_changed(stat: String, value: int) -> void:
 	print(stat + " changed by " + str(value))
+
+func _send_block_number_change_signal():
+	GlobalEventBus.publish("block_number_change", [_blocks.size()])
