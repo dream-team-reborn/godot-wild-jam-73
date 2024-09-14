@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=14 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
@@ -22,6 +22,8 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sf87x"]
 size = Vector3(100, 1, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gohhe"]
 
 [node name="Game" type="Node3D"]
 
@@ -96,4 +98,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 200
+label_settings = SubResource("LabelSettings_gohhe")
+autowrap_mode = 3
 script = ExtResource("5_qtm6v")

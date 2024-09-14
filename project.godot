@@ -67,8 +67,3 @@ confirm={
 
 3d_physics/layer_1="Everything else"
 3d_physics/layer_2="Modules"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
