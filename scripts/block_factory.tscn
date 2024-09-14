@@ -1,0 +1,12 @@
+[gd_scene load_steps=7 format=3 uid="uid://bclvasfglmlw2"]
+
+[ext_resource type="Script" path="res://scripts/block_factory.gd" id="1_copab"]
+[ext_resource type="Script" path="res://resources/block.gd" id="2_m228b"]
+[ext_resource type="Resource" uid="uid://dk8uggc7s7oqi" path="res://resources/block_1.tres" id="3_yxc3l"]
+[ext_resource type="Resource" uid="uid://dec8b1lbokynf" path="res://resources/block_2.tres" id="4_rp4n1"]
+[ext_resource type="Resource" uid="uid://cti3hvu86lghq" path="res://resources/block_3.tres" id="5_bgstf"]
+[ext_resource type="Resource" uid="uid://c62wyn0spwnsj" path="res://resources/block_4.tres" id="6_alkid"]
+
+[node name="BlockFactory" type="Node3D"]
+script = ExtResource("1_copab")
+blocks = Array[ExtResource("2_m228b")]([ExtResource("3_yxc3l"), ExtResource("4_rp4n1"), ExtResource("5_bgstf"), ExtResource("6_alkid")])

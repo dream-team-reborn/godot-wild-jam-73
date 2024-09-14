@@ -18,7 +18,7 @@ func _child_entered_tree(node: Node):
 		_defs[sign.name] = sign.params
 		print("Signal " + sign.name + " added to " + name)
 
-func publish(event: StringName, params: Array[Variant]) -> Error:
+func publish(event: StringName, params: Array[Variant] = []) -> Error:
 	if _check_params_from_def(event, params):
 		return callv("emit_signal", [event] + params)
 	return ERR_INVALID_PARAMETER
@@ -26,16 +26,17 @@ func publish(event: StringName, params: Array[Variant]) -> Error:
 	
 func _check_params_from_def(event: StringName, params: Array[Variant]) -> bool:
 	var def = _defs[event] as Array[EventBusSignal]
-	if not def:
+	if def == null:
 		print("Definition not present")
 		return false
 	var def_len = len(def)
 	var params_len = len(params)
+	
 	if len(def) != len(params):
 		print("Params length are different from definition aspected " + def_len + " received " + params_len)
 		return false	
 	
-	var type_checked = false
+	var type_checked = true
 	for index in range(0, def_len):
 		if is_instance_of(params[index], def[index].type):
 			type_checked = true

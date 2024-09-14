@@ -1,19 +1,23 @@
-[gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://dk8uggc7s7oqi"]
+[gd_resource type="Resource" script_class="Block" load_steps=4 format=3 uid="uid://dk8uggc7s7oqi"]
 
-[ext_resource type="Script" path="res://resources/block_resource.gd" id="1_1e3vt"]
 [ext_resource type="Script" path="res://resources/block.gd" id="1_i05rl"]
+[ext_resource type="ArrayMesh" uid="uid://buydc8gabjbfd" path="res://resources/module_i.res" id="1_jpvo0"]
 
-[sub_resource type="Resource" id="Resource_3ucl2"]
-script = ExtResource("1_1e3vt")
-amount = 10
-interval = -1
-
-[sub_resource type="Resource" id="Resource_3w74y"]
-script = ExtResource("1_1e3vt")
-amount = 10
-interval = -1
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lh20p"]
 
 [resource]
 script = ExtResource("1_i05rl")
-cost = SubResource("Resource_3ucl2")
-income = SubResource("Resource_3w74y")
+mesh = ExtResource("1_jpvo0")
+shape = SubResource("ConvexPolygonShape3D_lh20p")
+cost = 0
+cost_interval = 0
+income = 0
+income_interval = 0
+population = 0
+population_interval = 0
+food = 0
+food_interval = 0
+water = 0
+water_interval = 0
+fun = 0
+fun_interval = 0

@@ -11,8 +11,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func _on_spawn_module(shape: Module.ModuleShape):
+func _on_spawn_module():
 	print("Spawning module")
 	var module_instance = module_scene.instantiate()
 	add_child(module_instance)
-	module_instance.setup(shape)
+	var block = %BlockFactory.get_random_block()
+	module_instance.setup(block)

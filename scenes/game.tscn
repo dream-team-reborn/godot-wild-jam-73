@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=8 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
+[ext_resource type="PackedScene" uid="uid://bclvasfglmlw2" path="res://scripts/block_factory.tscn" id="3_eu714"]
 
 [sub_resource type="Environment" id="Environment_g8yu1"]
 
@@ -38,3 +39,7 @@ shape = SubResource("BoxShape3D_bmdca")
 [node name="ModuleSpawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 script = ExtResource("1_3ofxf")
+
+[node name="BlockFactory" parent="ModuleSpawner" instance=ExtResource("3_eu714")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
