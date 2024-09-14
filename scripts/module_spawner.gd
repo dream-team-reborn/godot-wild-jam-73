@@ -3,6 +3,7 @@ extends Node
 var module_scene = preload("res://scenes/game_prefabs/module.tscn")
 
 var last_spawned
+const POSITION_OFFSET = Vector3(0, -7, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,4 +25,4 @@ func _on_spawn_module():
 		
 	last_spawned = module_instance
 		
-	module_instance.setup()
+	module_instance.setup(%SpawnerMesh.global_position + POSITION_OFFSET)

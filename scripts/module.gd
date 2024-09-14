@@ -16,9 +16,10 @@ const DESTROY_Y = -3
 func _ready() -> void:
 	pass
 
-func setup():
+func setup(initial_position: Vector3):
 	GlobalEventBus.connect("move", _on_move)
 	
+	global_position = initial_position
 	_setup_shape(block)
 	change_state(State.FALLING)
 	set_collision_layer_value(LAYER_MODULE, true)
