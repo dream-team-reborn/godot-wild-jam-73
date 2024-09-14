@@ -1,10 +1,11 @@
-class_name ModuleSpawner extends Node
+extends Node
 
 var module_scene = preload("res://scenes/game_prefabs/module.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PlayerInputHandler.spawn_module.connect(_on_spawn_module)
+	%LocalEventBus.connect("shape_selected", _on_spawn_module)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
