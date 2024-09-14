@@ -9,6 +9,8 @@ const LAYER_ALL = 0b11111111  # all Modules
 var state : State = State.FALLING
 var current_mov_dir : Vector2
 
+const DESTROY_Y = -3
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -23,6 +25,9 @@ func setup(block : Block):
 func _physics_process(delta):
 	if state == State.FALLING:
 		position += Vector3(current_mov_dir.x, -1 * delta, current_mov_dir.y)
+	
+	if global_position.y < DESTROY_Y:
+		queue_free()
 
 func _setup_shape(block : Block):
 	$CollisionShape3D.set_shape(block.mesh.create_convex_shape())
