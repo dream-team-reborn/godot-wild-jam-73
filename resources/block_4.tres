@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Block" load_steps=2 format=3 uid="uid://c62wyn0spwnsj"]
+
+[ext_resource type="Script" path="res://resources/block.gd" id="1_vdunl"]
+
+[resource]
+script = ExtResource("1_vdunl")
