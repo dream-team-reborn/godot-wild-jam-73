@@ -19,8 +19,9 @@ func _on_spawn_module():
 	module_instance.block = %BlockFactory.get_random_block()
 	add_child(module_instance)
 	
-	if last_spawned:
+	if last_spawned != null:
 		last_spawned.release_player_control()
+		
 	last_spawned = module_instance
 		
 	module_instance.setup()
