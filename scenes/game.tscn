@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=13 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
+[ext_resource type="Script" path="res://scenes/camera_3d.gd" id="2_xnbdw"]
 [ext_resource type="PackedScene" uid="uid://bclvasfglmlw2" path="res://scripts/block_factory.tscn" id="3_eu714"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="4_3nxp3"]
 [ext_resource type="Script" path="res://scenes/debug_text_update.gd" id="5_qtm6v"]
@@ -32,14 +33,24 @@ environment = SubResource("Environment_g8yu1")
 camera_attributes = SubResource("CameraAttributesPhysical_fnq3s")
 compositor = SubResource("Compositor_3uttq")
 
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 7.93203, 0)
+light_color = Color(1, 0, 0.8, 1)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.721059, 0.692873, 0, -0.692873, 0.721059, 0, 2.94228, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.93203, 0)
+light_color = Color(0, 0.25, 1, 1)
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 8.86751, 10.2035)
+light_color = Color(1, 1, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 40, 40)
 projection = 1
 size = 40.0
+script = ExtResource("2_xnbdw")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -50,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_bmdca")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+layers = 3
 mesh = SubResource("BoxMesh_sf87x")
 
 [node name="ModuleSpawner" type="Node3D" parent="."]

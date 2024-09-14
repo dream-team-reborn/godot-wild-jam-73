@@ -21,6 +21,7 @@ func _setup_timer():
 
 func _on_timer_timeout() -> void:
 	var now = Time.get_unix_time_from_system()
+	var highest_y = 0
 	for k in _blocks:
 		var block = _blocks[k]
 		for stat in stats:
@@ -34,6 +35,14 @@ func _on_timer_timeout() -> void:
 					GlobalEventBus.publish("stat_changed", [stat, value])
 					if interval == 0:
 						_blocks_checks[str(k) + "_" + stat] = -1
+		var block_instance = instance_from_id(k)
+		if block_instance != null:
+			var block_y = block_instance.global_position.y
+			if block_y != null:
+				highest_y = max(highest_y, block_y)
+			
+	_send_highest_y_signal(highest_y)
+	
 
 func _on_entered_tree(node: Node) -> void:
 	var module = node as Module
@@ -56,3 +65,6 @@ func _on_stat_changed(stat: String, value: int) -> void:
 
 func _send_block_number_change_signal():
 	GlobalEventBus.publish("block_number_change", [_blocks.size()])
+
+func _send_highest_y_signal(highest_y):
+	GlobalEventBus.publish("highest_y", [highest_y])

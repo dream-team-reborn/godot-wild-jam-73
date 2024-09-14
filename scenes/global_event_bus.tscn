@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc034qn5ev6ow"]
+[gd_scene load_steps=10 format=3 uid="uid://bc034qn5ev6ow"]
 
 [ext_resource type="Script" path="res://addons/eventbus/src/eventbus_core.gd" id="1_p2lko"]
 [ext_resource type="Script" path="res://addons/eventbus/src/eventbus_signal.gd" id="2_23oks"]
@@ -29,6 +29,11 @@ script = ExtResource("3_8my5v")
 name = &"1"
 type = 2
 
+[sub_resource type="Resource" id="Resource_06xtu"]
+script = ExtResource("3_8my5v")
+name = &"highest_y"
+type = 3
+
 [node name="GlobalEventBus" type="Node"]
 script = ExtResource("1_p2lko")
 
@@ -50,3 +55,7 @@ params = Array[ExtResource("3_8my5v")]([SubResource("Resource_iq12k")])
 [node name="block_number_change" type="Node" parent="."]
 script = ExtResource("2_23oks")
 params = Array[ExtResource("3_8my5v")]([SubResource("Resource_opwcd")])
+
+[node name="highest_y" type="Node" parent="."]
+script = ExtResource("2_23oks")
+params = Array[ExtResource("3_8my5v")]([SubResource("Resource_06xtu")])
