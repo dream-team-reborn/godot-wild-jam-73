@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=9 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
@@ -11,6 +11,9 @@
 [sub_resource type="Compositor" id="Compositor_3uttq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bmdca"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sf87x"]
 size = Vector3(100, 1, 100)
 
 [node name="Game" type="Node3D"]
@@ -27,7 +30,9 @@ compositor = SubResource("Compositor_3uttq")
 transform = Transform3D(1, 0, 0, 0, 0.721059, 0.692873, 0, -0.692873, 0.721059, 0, 2.94228, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.04313, 11.5665)
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 50, 50, 50)
+projection = 1
+size = 100.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_mask = 3
@@ -35,6 +40,9 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_bmdca")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_sf87x")
 
 [node name="ModuleSpawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
