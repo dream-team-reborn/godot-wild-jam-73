@@ -50,3 +50,6 @@ func change_state(new_state: State):
 		
 func _on_move(direction: Vector2):
 	current_mov_dir = direction
+
+func release_player_control():
+	change_state(State.PLACED)
