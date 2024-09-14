@@ -1,17 +1,11 @@
 extends Node
 
+func _process(delta: float) -> void:
+	var horizontal = Input.get_axis("move_left", "move_right")
+	var vertical = Input.get_axis("move_down", "move_up")
+	
+	GlobalEventBus.publish("move", [Vector2(horizontal, vertical)])
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_right"):
-		print("right!")
-		
-	if event.is_action_pressed("move_left"):
-		print("left!")
-		
-	if event.is_action_pressed("move_up"):
-		%LocalEventBus.publish("shape_selected", [Module.ModuleShape.CYLINDER])
-		print("up!")
-		
-	if event.is_action_pressed("move_down"):
-		%LocalEventBus.publish("shape_selected", [Module.ModuleShape.BOX])
-		print("down!")
-		
+	if event.is_action_pressed("confirm"):
+		GlobalEventBus.publish("shape_selected", [Module.ModuleShape.BOX])

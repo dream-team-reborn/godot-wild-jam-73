@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnqsv62bw56gy"]
+
+[ext_resource type="Script" path="res://addons/eventbus/src/eventbus_core.gd" id="1_p2lko"]
+[ext_resource type="Script" path="res://addons/eventbus/src/eventbus_signal.gd" id="2_23oks"]
+[ext_resource type="Script" path="res://addons/eventbus/src/eventbus_signal_param_def.gd" id="3_8my5v"]
+
+[sub_resource type="Resource" id="Resource_3i4b7"]
+script = ExtResource("3_8my5v")
+name = &"shape"
+type = 2
+
+[sub_resource type="Resource" id="Resource_1y2mk"]
+script = ExtResource("3_8my5v")
+name = &"direction"
+type = 5
+
+[node name="GlobalEventBus" type="Node"]
+script = ExtResource("1_p2lko")
+
+[node name="shape_selected" type="Node" parent="."]
+script = ExtResource("2_23oks")
+params = Array[ExtResource("3_8my5v")]([SubResource("Resource_3i4b7")])
+
+[node name="move" type="Node" parent="."]
+script = ExtResource("2_23oks")
+params = Array[ExtResource("3_8my5v")]([SubResource("Resource_1y2mk")])

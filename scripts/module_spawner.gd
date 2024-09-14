@@ -4,7 +4,7 @@ var module_scene = preload("res://scenes/game_prefabs/module.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	%LocalEventBus.connect("shape_selected", _on_spawn_module)
+	GlobalEventBus.connect("shape_selected", _on_spawn_module)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

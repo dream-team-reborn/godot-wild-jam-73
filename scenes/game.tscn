@@ -1,15 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=7 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
-[ext_resource type="Script" path="res://addons/eventbus/src/eventbus_core.gd" id="3_m415n"]
-[ext_resource type="Script" path="res://addons/eventbus/src/eventbus_signal.gd" id="4_orxbs"]
-[ext_resource type="Script" path="res://addons/eventbus/src/eventbus_signal_param_def.gd" id="5_8rpo1"]
-
-[sub_resource type="Resource" id="Resource_3i4b7"]
-script = ExtResource("5_8rpo1")
-name = &"shape"
-type = 2
 
 [sub_resource type="Environment" id="Environment_g8yu1"]
 
@@ -21,14 +13,6 @@ type = 2
 size = Vector3(100, 1, 100)
 
 [node name="Game" type="Node3D"]
-
-[node name="LocalEventBus" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("3_m415n")
-
-[node name="shape_selected" type="Node" parent="LocalEventBus"]
-script = ExtResource("4_orxbs")
-params = Array[ExtResource("5_8rpo1")]([SubResource("Resource_3i4b7")])
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("2_4aiat")
@@ -45,6 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 0.721059, 0.692873, 0, -0.692873, 0.721059, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.04313, 11.5665)
 
 [node name="Floor" type="StaticBody3D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
