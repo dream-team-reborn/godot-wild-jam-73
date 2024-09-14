@@ -15,12 +15,12 @@ func _process(delta: float) -> void:
 	
 func _on_spawn_module():
 	print("Spawning module")
-	var module_instance = module_scene.instantiate()
+	var module_instance = module_scene.instantiate() as Module
+	module_instance.block = %BlockFactory.get_random_block()
 	add_child(module_instance)
-	var block = %BlockFactory.get_random_block()
 	
 	if last_spawned:
 		last_spawned.release_player_control()
 	last_spawned = module_instance
 		
-	module_instance.setup(block)
+	module_instance.setup()

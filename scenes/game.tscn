@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=10 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
-[ext_resource type="PackedScene" uid="uid://bclvasfglmlw2" path="res://scripts/block_factory.tscn" id="3_eu714"]
+[ext_resource type="PackedScene" path="res://scripts/block_factory.tscn" id="3_eu714"]
+[ext_resource type="Script" path="res://scripts/module_spawner_inspector.gd" id="6_8mp6j"]
 
 [sub_resource type="Environment" id="Environment_g8yu1"]
 
@@ -52,3 +53,6 @@ script = ExtResource("1_3ofxf")
 [node name="BlockFactory" parent="ModuleSpawner" instance=ExtResource("3_eu714")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
+
+[node name="Inspector" type="Node" parent="ModuleSpawner"]
+script = ExtResource("6_8mp6j")

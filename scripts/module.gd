@@ -6,6 +6,7 @@ enum State { FALLING, PLACED }
 const LAYER_MODULE : int = 2
 const LAYER_ALL = 0b11111111  # all Modules
 
+var block: Block
 var state : State = State.FALLING
 var current_mov_dir : Vector2
 
@@ -15,7 +16,7 @@ const DESTROY_Y = -3
 func _ready() -> void:
 	pass
 
-func setup(block : Block):
+func setup():
 	GlobalEventBus.connect("move", _on_move)
 	
 	_setup_shape(block)

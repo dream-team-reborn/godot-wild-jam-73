@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb5am1teihmsu"]
+[gd_scene load_steps=7 format=3 uid="uid://bc034qn5ev6ow"]
 
 [ext_resource type="Script" path="res://addons/eventbus/src/eventbus_core.gd" id="1_p2lko"]
 [ext_resource type="Script" path="res://addons/eventbus/src/eventbus_signal.gd" id="2_23oks"]
@@ -9,6 +9,16 @@ script = ExtResource("3_8my5v")
 name = &"direction"
 type = 5
 
+[sub_resource type="Resource" id="Resource_r0jj7"]
+script = ExtResource("3_8my5v")
+name = &"stat"
+type = 4
+
+[sub_resource type="Resource" id="Resource_6mpnv"]
+script = ExtResource("3_8my5v")
+name = &"value"
+type = 2
+
 [node name="GlobalEventBus" type="Node"]
 script = ExtResource("1_p2lko")
 
@@ -18,3 +28,7 @@ script = ExtResource("2_23oks")
 [node name="move" type="Node" parent="."]
 script = ExtResource("2_23oks")
 params = Array[ExtResource("3_8my5v")]([SubResource("Resource_1y2mk")])
+
+[node name="stat_changed" type="Node" parent="."]
+script = ExtResource("2_23oks")
+params = Array[ExtResource("3_8my5v")]([SubResource("Resource_r0jj7"), SubResource("Resource_6mpnv")])
