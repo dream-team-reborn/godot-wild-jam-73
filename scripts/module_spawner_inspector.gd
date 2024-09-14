@@ -30,6 +30,7 @@ func _on_timer_timeout() -> void:
 				var interval = block.get(stat + "_interval")
 				if diff > interval:
 					var value = block.get(stat)
+					_blocks_checks[str(k) + "_" + stat] = now
 					GlobalEventBus.publish("stat_changed", [stat, value])
 					if interval == 0:
 						_blocks_checks[str(k) + "_" + stat] = -1
