@@ -1,12 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=11 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
 [ext_resource type="PackedScene" uid="uid://bclvasfglmlw2" path="res://scripts/block_factory.tscn" id="3_eu714"]
 [ext_resource type="Script" path="res://scripts/module_spawner_inspector.gd" id="6_8mp6j"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="4_3nxp3"]
+[ext_resource type="Script" path="res://scenes/y_axis_text.gd" id="5_qtm6v"]
 
 [sub_resource type="Environment" id="Environment_g8yu1"]
+background_mode = 1
+background_color = Color(0.193233, 0.508982, 0.521515, 1)
+ambient_light_color = Color(0.180415, 0.414929, 0.530252, 1)
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_fnq3s"]
 
@@ -59,6 +63,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_3nxp3")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YAxisText" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+script = ExtResource("5_qtm6v")
 
 [node name="Inspector" type="Node" parent="ModuleSpawner"]
 script = ExtResource("6_8mp6j")

@@ -26,6 +26,7 @@ func setup():
 func _physics_process(delta):
 	if state == State.FALLING:
 		position += Vector3(current_mov_dir.x, -1 * delta, current_mov_dir.y)
+		GlobalEventBus.publish("module_y", [position.y])
 	
 	if global_position.y < DESTROY_Y:
 		queue_free()
