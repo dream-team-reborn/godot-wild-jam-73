@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_spawn_module():
-	if last_spawned:
+	if last_spawned != null:
 		if last_spawned.state == Module.State.MOVING:
 			last_spawned.release_player_control()
 			return
