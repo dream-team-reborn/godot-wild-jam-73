@@ -1,14 +1,17 @@
 [gd_scene load_steps=17 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
-[ext_resource type="PackedScene" uid="uid://d1apwv5fhsq6w" path="res://scenes/gui_manager.tscn" id="1_n0tbr"]
+[ext_resource type="PackedScene" path="res://scenes/gui_manager.tscn" id="1_n0tbr"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
 [ext_resource type="Script" path="res://scenes/camera_3d.gd" id="2_xnbdw"]
-[ext_resource type="PackedScene" uid="uid://bclvasfglmlw2" path="res://scenes/block_factory.tscn" id="3_eu714"]
+[ext_resource type="PackedScene" uid="uid://c0d66mg86sny" path="res://scenes/block_factory.tscn" id="3_eu714"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="4_3nxp3"]
 [ext_resource type="Script" path="res://scenes/debug_text_update.gd" id="5_qtm6v"]
 [ext_resource type="Script" path="res://scripts/module_spawner_inspector.gd" id="6_8mp6j"]
 [ext_resource type="Script" path="res://scenes/spawn_point_mesh.gd" id="6_08ya2"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_r4qbm"]
+size = Vector3(1, 1, 0.1)
 
 [sub_resource type="Environment" id="Environment_g8yu1"]
 background_mode = 1
@@ -18,9 +21,6 @@ ambient_light_color = Color(0.180415, 0.414929, 0.530252, 1)
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_fnq3s"]
 
 [sub_resource type="Compositor" id="Compositor_3uttq"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_r4qbm"]
-size = Vector3(1, 1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bmdca"]
 size = Vector3(100, 1, 100)
@@ -40,10 +40,15 @@ script = ExtResource("1_3ofxf")
 
 [node name="BlockFactory" parent="ModuleSpawner" instance=ExtResource("3_eu714")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
 
 [node name="Inspector" type="Node" parent="ModuleSpawner"]
 script = ExtResource("6_8mp6j")
+
+[node name="SpawnerMesh" type="MeshInstance3D" parent="ModuleSpawner"]
+unique_name_in_owner = true
+transform = Transform3D(-0.334937, 1.76777, 4.66507, 1.76777, -4.33013, 1.76777, 4.66506, 1.76777, -0.334936, 40, 20, 40)
+mesh = SubResource("PrismMesh_r4qbm")
+script = ExtResource("6_08ya2")
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("2_4aiat")
@@ -67,17 +72,10 @@ light_color = Color(1, 1, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 40, 40)
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.499999, -0.707107, -0.353553, 0.612372, 40, 40, 40)
 projection = 1
 size = 45.0
 script = ExtResource("2_xnbdw")
-
-[node name="SpawnerMesh" type="MeshInstance3D" parent="Camera3D"]
-unique_name_in_owner = true
-transform = Transform3D(-5, 4.37114e-07, 0, -3.57628e-07, -4.33013, -2.5, -2.38419e-07, -2.5, 4.33013, 0, 15.2939, -56.4898)
-mesh = SubResource("PrismMesh_r4qbm")
-skeleton = NodePath("../../ModuleSpawner")
-script = ExtResource("6_08ya2")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

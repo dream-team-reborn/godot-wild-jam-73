@@ -22,7 +22,7 @@ func _on_spawn_module():
 	
 	if last_spawned != null:
 		last_spawned.release_player_control()
-		
+	
 	last_spawned = module_instance
-		
+	
 	module_instance.setup(%SpawnerMesh.global_position + POSITION_OFFSET)

@@ -22,6 +22,7 @@ func _setup_timer():
 	var timer = Timer.new()
 	timer.autostart = true
 	timer.one_shot = false
+	timer.wait_time = .5
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
 
@@ -32,12 +33,18 @@ func _on_timer_timeout() -> void:
 		if increment != 0:
 			GlobalEventBus.publish("stat_delta", [k, increment])
 
-	var highest_y = 0
-	for child in get_children():
-		var node = child as Node3D
+	var highest = null
+	for child in get_parent().get_children():
+		var node = child as Module
 		if node:
-			highest_y = max(highest_y, node.global_position.y)
-	_send_highest_y_signal(highest_y)
+			if highest == null:
+				highest = node
+			var block_pos = node.global_position
+			var highest_y = highest.global_position.y
+			if block_pos != null:
+				if highest_y < block_pos.y and node.state == Module.State.PLACED:
+					highest = node
+	_send_highest_change_signal(highest)
 
 func _on_entered_tree(node: Node) -> void:
 	var module = node as Module
@@ -74,5 +81,5 @@ func _on_stat_changed(stat: String, neg: int, pos: int) -> void:
 func _send_block_number_change_signal():
 	GlobalEventBus.publish("block_number_change", [0])
 
-func _send_highest_y_signal(highest_y):
-	GlobalEventBus.publish("highest_y", [highest_y])
+func _send_highest_change_signal(highest_block):
+	GlobalEventBus.publish("highest_change", [highest_block])

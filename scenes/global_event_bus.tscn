@@ -36,8 +36,8 @@ type = 2
 
 [sub_resource type="Resource" id="Resource_06xtu"]
 script = ExtResource("3_8my5v")
-name = &"highest_y"
-type = 3
+name = &"highest_block"
+type = 24
 
 [node name="GlobalEventBus" type="Node"]
 script = ExtResource("1_p2lko")
@@ -65,6 +65,6 @@ params = Array[ExtResource("3_8my5v")]([SubResource("Resource_iq12k")])
 script = ExtResource("2_23oks")
 params = Array[ExtResource("3_8my5v")]([SubResource("Resource_opwcd")])
 
-[node name="highest_y" type="Node" parent="."]
+[node name="highest_change" type="Node" parent="."]
 script = ExtResource("2_23oks")
 params = Array[ExtResource("3_8my5v")]([SubResource("Resource_06xtu")])
