@@ -33,7 +33,8 @@ func _physics_process(delta):
 		GlobalEventBus.publish("module_y", [position.y])
 	
 	if global_position.y < DESTROY_Y and state != State.DESTROYING:
-		var particle_instance = particle_scene.instantiate()
+		var particle_instance = particle_scene.instantiate() as GPUParticles3D
+		particle_instance.global_rotation = Vector3(0, 1, 0)
 		add_child(particle_instance)
 		change_state(State.DESTROYING)
 		var timer = Timer.new()

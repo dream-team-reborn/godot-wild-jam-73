@@ -1,10 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvxpsf3wyo8qj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8he6d"]
+emission_shape_offset = Vector3(0, 10, 0)
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 5)
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
 direction = Vector3(0, 1, 0)
-initial_velocity_max = 50.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
 gravity = Vector3(0, -40, 0)
 linear_accel_min = -10.0
 linear_accel_max = 10.0
@@ -14,10 +23,10 @@ tangential_accel_min = -2.23517e-06
 tangential_accel_max = 5.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_wmdpx"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Particles" type="GPUParticles3D"]
 amount = 100
-lifetime = 10.0
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_8he6d")
 draw_pass_1 = SubResource("BoxMesh_wmdpx")
