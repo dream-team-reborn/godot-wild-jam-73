@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crwbsyx3mdxqh"]
+[gd_scene load_steps=8 format=3 uid="uid://crwbsyx3mdxqh"]
 
 [ext_resource type="Script" path="res://scripts/gui_manager.gd" id="1_igwfx"]
 [ext_resource type="Texture2D" uid="uid://cxchmg0jnf52" path="res://assets/pawns.png" id="2_k12re"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3acmpylc47td" path="res://assets/resource_apple.png" id="5_7p4cl"]
 [ext_resource type="Texture2D" uid="uid://ovp7w5io5fsu" path="res://assets/flask_half.png" id="6_erc6b"]
 [ext_resource type="Texture2D" uid="uid://b6j74md1sh0g1" path="res://assets/suit_hearts.png" id="7_fmyhs"]
+[ext_resource type="Texture2D" uid="uid://b0d6a41p10hr7" path="res://assets/module_x.png" id="7_rj1vr"]
 
 [node name="GuiManager" type="Control"]
 layout_mode = 3
@@ -32,18 +33,18 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="PopulationContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="PopulationContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/PopulationContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_vertical = 4
@@ -51,19 +52,19 @@ texture = ExtResource("2_k12re")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="PopulationLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PopulationContainer"]
+[node name="PopulationLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0
 "
 
-[node name="IncomeContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="IncomeContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/IncomeContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -72,18 +73,18 @@ texture = ExtResource("4_ym7cc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/IncomeContainer"]
+[node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="FoodContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="FoodContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/FoodContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -92,19 +93,19 @@ texture = ExtResource("5_7p4cl")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="FoodLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FoodContainer"]
+[node name="FoodLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0
 "
 
-[node name="WaterContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="WaterContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/WaterContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -113,18 +114,18 @@ texture = ExtResource("6_erc6b")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="WaterLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/WaterContainer"]
+[node name="WaterLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="FunContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="FunContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/FunContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -133,7 +134,149 @@ texture = ExtResource("7_fmyhs")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="FunLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FunContainer"]
+[node name="FunLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Block1" type="VBoxContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Block1Image" type="TextureRect" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block1"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("7_rj1vr")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="BlockCContainer" type="CenterContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block1"]
+layout_mode = 2
+
+[node name="BlockVContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block1/BlockCContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Block1Resource" type="TextureRect" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block1/BlockCContainer/BlockVContainer"]
+custom_minimum_size = Vector2(25, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_k12re")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Block1Value" type="Label" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block1/BlockCContainer/BlockVContainer"]
+layout_mode = 2
+text = "0
+"
+
+[node name="Block2" type="VBoxContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Block2Image" type="TextureRect" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_rj1vr")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="BlockCContainer" type="CenterContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block2"]
+layout_mode = 2
+
+[node name="BlockVContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block2/BlockCContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Block2Resource" type="TextureRect" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block2/BlockCContainer/BlockVContainer"]
+custom_minimum_size = Vector2(25, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_k12re")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Block2Value" type="Label" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block2/BlockCContainer/BlockVContainer"]
+layout_mode = 2
+text = "0
+"
+
+[node name="Block3" type="VBoxContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Block2Image" type="TextureRect" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_rj1vr")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="BlockCContainer" type="CenterContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block3"]
+layout_mode = 2
+
+[node name="BlockVContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block3/BlockCContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Block2Resource" type="TextureRect" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block3/BlockCContainer/BlockVContainer"]
+custom_minimum_size = Vector2(25, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_k12re")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Block2Value" type="Label" parent="MarginContainer/PanelContainer2/MarginContainer/CenterContainer/HBoxContainer/Block3/BlockCContainer/BlockVContainer"]
+layout_mode = 2
+text = "0
+"
