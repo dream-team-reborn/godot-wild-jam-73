@@ -1,13 +1,13 @@
 class_name Module extends RigidBody3D
 
 enum ModuleShape { CYLINDER, BOX }
-enum State { FALLING, PLACED }
+enum State { MOVING, FALLING, PLACED }
 
 const LAYER_MODULE : int = 2
 const LAYER_ALL = 0b11111111  # all Modules
 
 var block: Block
-var state : State = State.FALLING
+var state : State = State.MOVING
 var current_mov_dir : Vector2
 
 const DESTROY_Y = -3
@@ -21,11 +21,11 @@ func setup(initial_position: Vector3):
 	
 	global_position = initial_position
 	_setup_shape(block)
-	change_state(State.FALLING)
+	change_state(State.MOVING)
 	set_collision_layer_value(LAYER_MODULE, true)
 	
 func _physics_process(delta):
-	if state == State.FALLING:
+	if state == State.MOVING:
 		position += Vector3(current_mov_dir.x, -1 * delta, current_mov_dir.y)
 		GlobalEventBus.publish("module_y", [position.y])
 	
@@ -38,23 +38,21 @@ func _setup_shape(block : Block):
 	$ShadowProjector.texture_albedo = block.shadow
 
 func _on_body_entered(body: Node) -> void:
-	print("collided!")
-	change_state(State.PLACED)
+	if state != State.PLACED: change_state(State.PLACED)
 	pass
 
 func change_state(new_state: State):
-	print("change state to " + State.keys()[new_state])
 	state = new_state
 	
-	freeze = new_state == State.FALLING
-	$ShadowProjector.visible = new_state == State.FALLING
+	freeze = new_state == State.MOVING
+	$ShadowProjector.visible = new_state == State.MOVING
 	
 	match new_state:
-		State.FALLING: set_collision_mask(LAYER_ALL)
+		State.MOVING: set_collision_mask(LAYER_ALL)
 		State.PLACED:  set_collision_mask(LAYER_ALL)
 		
 func _on_move(direction: Vector2):
 	current_mov_dir = direction
 
 func release_player_control():
-	change_state(State.PLACED)
+	change_state(State.FALLING)
