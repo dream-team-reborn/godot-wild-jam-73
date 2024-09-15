@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://chq215og6y1su"]
+
+[ext_resource type="ArrayMesh" uid="uid://cagcjdcgphu8j" path="res://resources/raccoon.res" id="1_te2mp"]
+[ext_resource type="ArrayMesh" uid="uid://ci5t2cccl3nig" path="res://resources/trash.res" id="2_u50g8"]
+
+[node name="Raccoon" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Raccoon" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(33.9776, 5.90951e-08, -2.5071, 2.5071, -1.60394e-06, 33.9776, -5.90951e-08, -34.07, -1.60394e-06, -0.183533, 1.32949, 0)
+mesh = ExtResource("1_te2mp")
+skeleton = NodePath("../..")
+
+[node name="Trash" type="MeshInstance3D" parent="Node3D"]
+mesh = ExtResource("2_u50g8")
+skeleton = NodePath("../..")

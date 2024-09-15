@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=22 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="PackedScene" uid="uid://crwbsyx3mdxqh" path="res://scenes/gui_manager.tscn" id="1_n0tbr"]
@@ -10,13 +10,14 @@
 [ext_resource type="Script" path="res://scripts/module_spawner_inspector.gd" id="6_8mp6j"]
 [ext_resource type="Script" path="res://scenes/spawn_point_mesh.gd" id="6_08ya2"]
 [ext_resource type="ArrayMesh" uid="uid://mgejnivi8jog" path="res://resources/platform.res" id="8_03xcv"]
+[ext_resource type="Script" path="res://scenes/trash_panda_generator.gd" id="11_4ek1o"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_r4qbm"]
 size = Vector3(1, 1, 0.1)
 
 [sub_resource type="Environment" id="Environment_384jw"]
 background_mode = 1
-background_color = Color(0.27228, 0.36, 0.2376, 1)
+background_color = Color(0.1127, 0.177215, 0.23, 1)
 background_energy_multiplier = 0.9
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_fnq3s"]
@@ -27,6 +28,23 @@ background_energy_multiplier = 0.9
 size = Vector3(100, 1, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gohhe"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xojq4"]
+size = Vector2(700, 700)
+
+[sub_resource type="Gradient" id="Gradient_jocge"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.13377, 0.591207, 1)
+colors = PackedColorArray(0.2109, 0.37, 0.24272, 1, 0.0072, 0.18, 0.04176, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0tk7k"]
+gradient = SubResource("Gradient_jocge")
+fill = 1
+fill_from = Vector2(0.497863, 0.495726)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w42qr"]
+disable_ambient_light = true
+albedo_texture = SubResource("GradientTexture2D_0tk7k")
 
 [node name="Game" type="Node3D"]
 
@@ -107,3 +125,10 @@ theme_override_font_sizes/font_size = 200
 label_settings = SubResource("LabelSettings_gohhe")
 autowrap_mode = 3
 script = ExtResource("5_qtm6v")
+
+[node name="TrashPandaGenerator" type="Node" parent="."]
+script = ExtResource("11_4ek1o")
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_xojq4")
+surface_material_override/0 = SubResource("StandardMaterial3D_w42qr")
