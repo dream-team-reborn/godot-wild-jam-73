@@ -54,7 +54,7 @@ func _on_body_entered(body: Node) -> void:
 func change_state(new_state: State):
 	state = new_state
 	
-	freeze = new_state == State.MOVING
+	gravity_scale = 0 if state == State.MOVING else 3
 	$ShadowProjector.visible = new_state == State.MOVING
 	
 	match new_state:
