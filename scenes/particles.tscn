@@ -17,6 +17,7 @@ tangential_accel_max = 5.0
 
 [node name="Particles" type="GPUParticles3D"]
 amount = 100
+lifetime = 10.0
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_8he6d")
 draw_pass_1 = SubResource("BoxMesh_wmdpx")

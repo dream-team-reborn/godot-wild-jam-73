@@ -13,6 +13,8 @@ var current_mov_dir : Vector2
 const DESTROY_Y = -3
 
 var particle_scene = preload("res://scenes/particles.tscn")
+var rng = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -37,7 +39,7 @@ func _physics_process(delta):
 		var timer = Timer.new()
 		timer.autostart = true
 		timer.one_shot = true
-		timer.wait_time = 1
+		timer.wait_time = 10
 		timer.timeout.connect(_destroy_module)
 		$MeshInstance3D.visible = false
 		add_child(timer)
@@ -46,6 +48,8 @@ func _setup_shape(block : Block):
 	$CollisionShape3D.set_shape(block.mesh.create_convex_shape())
 	$MeshInstance3D.mesh = block.mesh
 	$ShadowProjector.texture_albedo = block.shadow
+	var rnd_scale = rng.randf_range(0.9, 1.1)
+	scale = Vector3(rnd_scale,rnd_scale,rnd_scale)
 
 func _on_body_entered(body: Node) -> void:
 	if state != State.PLACED: change_state(State.PLACED)
