@@ -37,7 +37,6 @@ func _update_highest(delta):
 
 func _on_highest_change(highest_block):
 	if target != highest_block:
-		print("highest changed!")
 		if not target: 
 			target = highest_block
 		old_target_position = target.global_position

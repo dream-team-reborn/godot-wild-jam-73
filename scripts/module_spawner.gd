@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_spawn_module():
-	print("Spawning module")
 	var module_instance = module_scene.instantiate() as Module
 	module_instance.block = %BlockFactory.get_random_block()
 	add_child(module_instance)

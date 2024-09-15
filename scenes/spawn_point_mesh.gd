@@ -25,7 +25,6 @@ func _on_highest_change(highest_block):
 		previous_highest = highest_block
 
 	if highest_block.global_position.y >= previous_highest.global_position.y:
-		print("changed position to %0.2f" % previous_highest.global_position.y)
 		previous_highest = highest_block
 
 func up_and_down_animation(starting_y, time):

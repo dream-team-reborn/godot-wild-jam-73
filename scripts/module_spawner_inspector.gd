@@ -82,4 +82,5 @@ func _send_block_number_change_signal():
 	GlobalEventBus.publish("block_number_change", [0])
 
 func _send_highest_change_signal(highest_block):
-	GlobalEventBus.publish("highest_change", [highest_block])
+	if highest_block != null:
+		GlobalEventBus.publish("highest_change", [highest_block])
