@@ -21,6 +21,8 @@ radial_accel_min = -2.5
 radial_accel_max = -2.5
 tangential_accel_min = -2.23517e-06
 tangential_accel_max = 5.0
+scale_min = 0.5
+scale_max = 5.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_wmdpx"]
 size = Vector3(0.5, 0.5, 0.5)
