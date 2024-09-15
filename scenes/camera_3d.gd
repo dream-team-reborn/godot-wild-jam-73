@@ -34,8 +34,6 @@ func _update_highest(delta):
 	var camera_position = global_transform.origin
 	var direction_to_target = look_here - initial - camera_position
 	var horizontal_distance = Vector2(direction_to_target.x, direction_to_target.z).length()	
-	#var angle_x = atan2(direction_to_target.y, horizontal_distance)
-	#rotation.x = angle_x
 
 func _on_highest_change(highest_block):
 	if target != highest_block:
