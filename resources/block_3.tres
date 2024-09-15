@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="Block" load_steps=3 format=3 uid="uid://cti3hvu86lghq"]
+[gd_resource type="Resource" script_class="Block" load_steps=4 format=3 uid="uid://cti3hvu86lghq"]
 
 [ext_resource type="Script" path="res://resources/block.gd" id="1_3ttwp"]
-[ext_resource type="ArrayMesh" uid="uid://chu1blr1pm3ir" path="res://resources/module_o.res" id="1_sa711"]
-[ext_resource type="Texture2D" uid="uid://dk5oatvt7ex6m" path="res://resources/CrossDecal.png" id="3_vogfh"]
+[ext_resource type="ArrayMesh" uid="uid://wbgj7nrxyoxo" path="res://resources/module_o.res" id="1_sa711"]
+[ext_resource type="Texture2D" uid="uid://6ie5anxso5g3" path="res://assets/o.png" id="3_a08sy"]
 
 [resource]
 script = ExtResource("1_3ttwp")
 mesh = ExtResource("1_sa711")
-shadow = ExtResource("3_vogfh")
+shadow = ExtResource("3_a08sy")
 cost = -100
 income_per_sec = 10
 food_per_sec = -1

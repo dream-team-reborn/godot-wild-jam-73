@@ -2,12 +2,12 @@
 
 [ext_resource type="ArrayMesh" uid="uid://118xmj4rvyrx" path="res://resources/module_l.res" id="1_flrk8"]
 [ext_resource type="Script" path="res://resources/block.gd" id="1_idxf4"]
-[ext_resource type="Texture2D" uid="uid://dk5oatvt7ex6m" path="res://resources/CrossDecal.png" id="3_qyeq3"]
+[ext_resource type="Texture2D" uid="uid://bpu6dh6baj47m" path="res://assets/l.png" id="3_o2bkx"]
 
 [resource]
 script = ExtResource("1_idxf4")
 mesh = ExtResource("1_flrk8")
-shadow = ExtResource("3_qyeq3")
+shadow = ExtResource("3_o2bkx")
 cost = -150
 income_per_sec = 0
 food_per_sec = 1
