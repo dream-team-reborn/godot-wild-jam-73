@@ -58,17 +58,10 @@ environment = SubResource("Environment_g8yu1")
 camera_attributes = SubResource("CameraAttributesPhysical_fnq3s")
 compositor = SubResource("Compositor_3uttq")
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 7.93203, 0)
-light_color = Color(1, 0, 0.8, 1)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.93203, 0)
-light_color = Color(0, 0.25, 1, 1)
-
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 8.86751, 10.2035)
-light_color = Color(1, 1, 0, 1)
+[node name="NormalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+light_color = Color(0.98, 0.992667, 1, 1)
+light_energy = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
