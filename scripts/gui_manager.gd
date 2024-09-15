@@ -1,5 +1,9 @@
 extends Control
 
+@export var blocks: Array[Block]
+
+var _gui_block = preload("res://scenes/gui_block.tscn")
+
 var _money: int
 var _money_increment: int
 var _population: int
@@ -14,8 +18,16 @@ var _fun_pos: int
 func _ready() -> void:
 	GlobalEventBus.connect("stat_delta", _on_stat_delta)
 	GlobalEventBus.connect("stat_changed", _on_stat_changed)
+	_setup_choose_menu()
 	pass
 
+func _setup_choose_menu():
+	for block in blocks:
+		var child = _gui_block.instantiate()
+		if child:
+			child.cost = block.cost
+			%HBoxContainer.add_child(child)
+	
 func _on_stat_delta(stat: String, delta: int) -> void:
 	match stat:
 		"income_per_sec":
