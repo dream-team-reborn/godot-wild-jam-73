@@ -35,6 +35,7 @@ func _physics_process(delta):
 func _setup_shape(block : Block):
 	$CollisionShape3D.set_shape(block.mesh.create_convex_shape())
 	$MeshInstance3D.mesh = block.mesh
+	$ShadowProjector.texture_albedo = block.shadow
 
 func _on_body_entered(body: Node) -> void:
 	print("collided!")
@@ -46,6 +47,7 @@ func change_state(new_state: State):
 	state = new_state
 	
 	freeze = new_state == State.FALLING
+	$ShadowProjector.visible = new_state == State.FALLING
 	
 	match new_state:
 		State.FALLING: set_collision_mask(LAYER_ALL)

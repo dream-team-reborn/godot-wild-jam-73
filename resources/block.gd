@@ -2,7 +2,7 @@
 class_name Block extends Resource
 
 @export var mesh: Mesh
-@export var shape: Shape3D
+@export var shadow: Texture2D
 @export var cost: int
 @export var cost_interval: int
 @export var income: int

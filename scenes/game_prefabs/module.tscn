@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://l0uot0e12qsc"]
+[gd_scene load_steps=5 format=3 uid="uid://l0uot0e12qsc"]
 
 [ext_resource type="Script" path="res://scripts/module.gd" id="1_njp28"]
+[ext_resource type="ArrayMesh" uid="uid://dltptbaj7m8qy" path="res://resources/module_x.res" id="2_hpgbh"]
+[ext_resource type="Texture2D" uid="uid://cbgqnaixm1kon" path="res://icon.svg" id="3_sxsw4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ysy5i"]
 radius = 2.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_sl2sd"]
-top_radius = 2.0
-bottom_radius = 2.0
 
 [node name="Module" type="RigidBody3D"]
 collision_layer = 2
@@ -23,6 +21,15 @@ script = ExtResource("1_njp28")
 shape = SubResource("CylinderShape3D_ysy5i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_sl2sd")
+mesh = ExtResource("2_hpgbh")
+
+[node name="ShadowProjector" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28, 0)
+layers = 7
+size = Vector3(12, 50, 12)
+texture_albedo = ExtResource("3_sxsw4")
+upper_fade = 1e-05
+lower_fade = 1e-05
+cull_mask = 2147483647
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

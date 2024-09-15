@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="Block" load_steps=4 format=3 uid="uid://dk8uggc7s7oqi"]
 
 [ext_resource type="Script" path="res://resources/block.gd" id="1_i05rl"]
-[ext_resource type="ArrayMesh" uid="uid://buydc8gabjbfd" path="res://resources/module_i.res" id="1_jpvo0"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lh20p"]
+[ext_resource type="ArrayMesh" uid="uid://3e66piwgk5nj" path="res://resources/module_i.res" id="1_jpvo0"]
+[ext_resource type="Texture2D" uid="uid://dk5oatvt7ex6m" path="res://resources/CrossDecal.png" id="3_p4hf1"]
 
 [resource]
 script = ExtResource("1_i05rl")
 mesh = ExtResource("1_jpvo0")
-shape = SubResource("ConvexPolygonShape3D_lh20p")
+shadow = ExtResource("3_p4hf1")
 cost = 200
 cost_interval = 0
 income = 0

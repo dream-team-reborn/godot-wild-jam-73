@@ -2,13 +2,12 @@
 
 [ext_resource type="ArrayMesh" uid="uid://dltptbaj7m8qy" path="res://resources/module_x.res" id="1_4h2n7"]
 [ext_resource type="Script" path="res://resources/block.gd" id="1_vdunl"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x3ui3"]
+[ext_resource type="Texture2D" uid="uid://dk5oatvt7ex6m" path="res://resources/CrossDecal.png" id="3_wks4i"]
 
 [resource]
 script = ExtResource("1_vdunl")
 mesh = ExtResource("1_4h2n7")
-shape = SubResource("ConvexPolygonShape3D_x3ui3")
+shadow = ExtResource("3_wks4i")
 cost = 250
 cost_interval = 0
 income = -50
