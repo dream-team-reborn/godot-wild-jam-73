@@ -57,16 +57,19 @@ func _on_body_entered(body: Node) -> void:
 	pass
 
 func change_state(new_state: State):
+	var previous_state = state
 	state = new_state
-	
 	gravity_scale = 0 if state == State.MOVING else 3
 	$ShadowProjector.visible = new_state == State.MOVING
 	
 	match new_state:
-		State.MOVING: set_collision_mask(LAYER_ALL)
+		State.MOVING: 
+			set_collision_mask(LAYER_ALL)
 		State.PLACED: 
 			set_collision_mask(LAYER_ALL)
 			GlobalEventBus.publish("block_placed", [self])
+		State.DESTROYING: 
+			GlobalEventBus.publish("block_destroyed", [previous_state, self])
 		
 func _on_move(direction: Vector2):
 	current_mov_dir = direction
