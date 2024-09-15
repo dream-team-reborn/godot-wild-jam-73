@@ -28,6 +28,9 @@ func _update_highest(delta):
 		look_here = target_position
 		old_target_position = look_here
 	
+	if look_here.y < 0:
+		look_here = Vector3(0, 0, 0)
+	
 	look_here += initial
 	position.y = look_here.y
 	size = max(45, look_here.y * 1.5)

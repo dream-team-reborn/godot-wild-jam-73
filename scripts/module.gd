@@ -1,7 +1,7 @@
 class_name Module extends RigidBody3D
 
 enum ModuleShape { CYLINDER, BOX }
-enum State { MOVING, FALLING, PLACED }
+enum State { MOVING, FALLING, PLACED, DESTROYING }
 
 const LAYER_MODULE : int = 2
 const LAYER_ALL = 0b11111111  # all Modules
@@ -12,6 +12,7 @@ var current_mov_dir : Vector2
 
 const DESTROY_Y = -3
 
+var particle_scene = preload("res://scenes/particles.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -29,8 +30,17 @@ func _physics_process(delta):
 		position += Vector3(current_mov_dir.x, -1 * delta, current_mov_dir.y)
 		GlobalEventBus.publish("module_y", [position.y])
 	
-	if global_position.y < DESTROY_Y:
-		queue_free()
+	if global_position.y < DESTROY_Y and state != State.DESTROYING:
+		var particle_instance = particle_scene.instantiate()
+		add_child(particle_instance)
+		change_state(State.DESTROYING)
+		var timer = Timer.new()
+		timer.autostart = true
+		timer.one_shot = true
+		timer.wait_time = 1
+		timer.timeout.connect(_destroy_module)
+		$MeshInstance3D.visible = false
+		add_child(timer)
 
 func _setup_shape(block : Block):
 	$CollisionShape3D.set_shape(block.mesh.create_convex_shape())
@@ -57,3 +67,6 @@ func _on_move(direction: Vector2):
 func release_player_control():
 	change_state(State.FALLING)
 	linear_velocity = Vector3(0, -20, 0)
+
+func _destroy_module():
+	queue_free()

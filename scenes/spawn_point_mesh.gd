@@ -15,7 +15,7 @@ func _ready():
 func _process(delta: float) -> void:
 	time += delta
 	rotate_object_local(angular_velocity.normalized(), angular_velocity.length() * delta)
-	if previous_highest != null:
+	if previous_highest != null and previous_highest.global_position.y > 0:
 		global_position.y = up_and_down_animation(previous_highest.global_position.y + 20, time)
 	else:
 		global_position.y = up_and_down_animation(initial_position.y, time)
