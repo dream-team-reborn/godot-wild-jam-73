@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/debug_text_update.gd" id="5_qtm6v"]
 [ext_resource type="Script" path="res://scripts/module_spawner_inspector.gd" id="6_8mp6j"]
 [ext_resource type="Script" path="res://scenes/spawn_point_mesh.gd" id="6_08ya2"]
+[ext_resource type="ArrayMesh" uid="uid://mgejnivi8jog" path="res://resources/platform.res" id="8_03xcv"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_r4qbm"]
 size = Vector3(1, 1, 0.1)
@@ -23,9 +24,6 @@ background_energy_multiplier = 0.9
 [sub_resource type="Compositor" id="Compositor_3uttq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bmdca"]
-size = Vector3(100, 1, 100)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sf87x"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gohhe"]
@@ -79,8 +77,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_bmdca")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 layers = 3
-mesh = SubResource("BoxMesh_sf87x")
+mesh = ExtResource("8_03xcv")
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
