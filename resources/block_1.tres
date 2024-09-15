@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Block" load_steps=4 format=3 uid="uid://dk8uggc7s7oqi"]
+[gd_resource type="Resource" script_class="Block" load_steps=3 format=3 uid="uid://dk8uggc7s7oqi"]
 
 [ext_resource type="Script" path="res://resources/block.gd" id="1_i05rl"]
 [ext_resource type="ArrayMesh" uid="uid://3e66piwgk5nj" path="res://resources/module_i.res" id="1_jpvo0"]
@@ -8,15 +8,9 @@
 script = ExtResource("1_i05rl")
 mesh = ExtResource("1_jpvo0")
 shadow = ExtResource("3_p4hf1")
-cost = 200
-cost_interval = 0
-income = 0
-income_interval = 0
+cost = -200
+income_per_sec = 0
+food_per_sec = -1
 population = 0
-population_interval = 0
-food = -5
-food_interval = 10
 water = 15
-water_interval = 0
 fun = 0
-fun_interval = 0
