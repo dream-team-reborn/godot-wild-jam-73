@@ -23,10 +23,14 @@ func _ready() -> void:
 	pass
 
 func _setup_choose_menu():
+	blocks.sort_custom(func(a: Block, b: Block): return a.cost > b.cost)
+	var index = 0
 	for block in blocks:
 		var child = _gui_block.instantiate()
 		if child:
+			index += 1
 			child.block = block
+			child.index = index
 			child.pressed.connect(_on_gui_block_pressed)
 			%HBoxContainer.add_child(child)
 	
