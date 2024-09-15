@@ -24,7 +24,7 @@ shape = SubResource("CylinderShape3D_ysy5i")
 mesh = ExtResource("2_hpgbh")
 
 [node name="ShadowProjector" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.5, 0)
 layers = 7
 size = Vector3(12, 50, 12)
 texture_albedo = ExtResource("3_sxsw4")
