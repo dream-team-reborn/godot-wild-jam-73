@@ -68,3 +68,6 @@ params = Array[ExtResource("3_8my5v")]([SubResource("Resource_opwcd")])
 [node name="highest_change" type="Node" parent="."]
 script = ExtResource("2_23oks")
 params = Array[ExtResource("3_8my5v")]([SubResource("Resource_06xtu")])
+
+[node name="escape" type="Node" parent="."]
+script = ExtResource("2_23oks")
