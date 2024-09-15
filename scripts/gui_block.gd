@@ -1,13 +1,13 @@
 class_name GUIBlock extends VBoxContainer
 
-signal block_clicked
+signal pressed(block)
 
-var cost: int
+var block: Block
 
 func _ready() -> void:
-	%Label.text = str(abs(cost))
+	%Label.text = str(abs(block.cost))
+	%TextureButton.texture_normal = block.preview
 	%TextureButton.pressed.connect(_on_texture_button_pressed)
 
 func _on_texture_button_pressed() -> void:
-	print("Texture button clicked")
-	emit_signal(&"block_clicked")
+	emit_signal(&"pressed", block)

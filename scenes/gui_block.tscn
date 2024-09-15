@@ -1,19 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd3jaqf3vdf5p"]
+[gd_scene load_steps=5 format=3 uid="uid://dd3jaqf3vdf5p"]
 
 [ext_resource type="Script" path="res://scripts/gui_block.gd" id="1_mhk1u"]
 [ext_resource type="Texture2D" uid="uid://b0d6a41p10hr7" path="res://assets/module_x.png" id="2_uae5b"]
 [ext_resource type="Texture2D" uid="uid://dpx63jnuwfusk" path="res://assets/pouch_add.png" id="3_guweb"]
 [ext_resource type="Texture2D" uid="uid://cgo23sb34p5vi" path="res://assets/dollar.png" id="3_kqip6"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_kyjdt"]
-device = -1
-keycode = 65
-unicode = 97
-
-[sub_resource type="Shortcut" id="Shortcut_a45mo"]
-events = [SubResource("InputEventKey_kyjdt")]
-
-[sub_resource type="BitMap" id="BitMap_4upol"]
 
 [node name="Block" type="VBoxContainer"]
 anchors_preset = 15
@@ -32,13 +22,8 @@ layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 1
 button_mask = 7
-shortcut = SubResource("Shortcut_a45mo")
 texture_normal = ExtResource("2_uae5b")
 texture_pressed = ExtResource("3_guweb")
-texture_hover = ExtResource("3_guweb")
-texture_disabled = ExtResource("3_guweb")
-texture_focused = ExtResource("3_guweb")
-texture_click_mask = SubResource("BitMap_4upol")
 ignore_texture_size = true
 stretch_mode = 5
 

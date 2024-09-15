@@ -18,6 +18,7 @@ var _fun_pos: int
 func _ready() -> void:
 	GlobalEventBus.connect("stat_delta", _on_stat_delta)
 	GlobalEventBus.connect("stat_changed", _on_stat_changed)
+	GlobalEventBus.connect("block_selected", _on_block_selected)
 	_setup_choose_menu()
 	pass
 
@@ -25,7 +26,8 @@ func _setup_choose_menu():
 	for block in blocks:
 		var child = _gui_block.instantiate()
 		if child:
-			child.cost = block.cost
+			child.block = block
+			child.pressed.connect(_on_gui_block_pressed)
 			%HBoxContainer.add_child(child)
 	
 func _on_stat_delta(stat: String, delta: int) -> void:
@@ -54,6 +56,12 @@ func _on_stat_changed(stat: String, neg: int, pos: int) -> void:
 		_:
 			pass
 	_update_ui(stat)
+
+func _on_block_selected(block: Block) -> void:
+	print("Block " + str(block))
+
+func _on_gui_block_pressed(block: Block) -> void:
+	GlobalEventBus.publish("block_selected", [block])
 
 func _update_ui(stat: String) -> void:
 	match stat:
