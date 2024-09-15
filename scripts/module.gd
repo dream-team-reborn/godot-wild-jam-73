@@ -23,7 +23,7 @@ func setup(initial_position: Vector3):
 	GlobalEventBus.connect("move", _on_move)
 	
 	global_position = initial_position
-	_setup_shape(block)
+	_setup_shape()
 	change_state(State.MOVING)
 	set_collision_layer_value(LAYER_MODULE, true)
 	
@@ -45,14 +45,14 @@ func _physics_process(delta):
 		$MeshInstance3D.visible = false
 		add_child(timer)
 
-func _setup_shape(block : Block):
+func _setup_shape():
 	$CollisionShape3D.set_shape(block.mesh.create_convex_shape())
 	$MeshInstance3D.mesh = block.mesh
 	$ShadowProjector.texture_albedo = block.shadow
 	var rnd_scale = rng.randf_range(0.9, 1.1)
 	scale = Vector3(rnd_scale,rnd_scale,rnd_scale)
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	if state != State.PLACED: change_state(State.PLACED)
 	pass
 
