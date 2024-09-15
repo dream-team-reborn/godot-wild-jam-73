@@ -33,7 +33,7 @@ func _update_highest(delta):
 	
 	look_here += initial
 	position.y = look_here.y
-	size = max(45, look_here.y * 1.5)
+	size = min(100, max(45, look_here.y * 1.5 - 20))
 	var camera_position = global_transform.origin
 	var direction_to_target = look_here - initial - camera_position
 	var horizontal_distance = Vector2(direction_to_target.x, direction_to_target.z).length()	
