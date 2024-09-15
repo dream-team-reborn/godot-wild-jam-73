@@ -33,6 +33,7 @@ GlobalEventBus="*res://scenes/global_event_bus.tscn"
 [display]
 
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [editor_plugins]
