@@ -15,6 +15,11 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_spawn_module():
+	if last_spawned:
+		if last_spawned.state == Module.State.MOVING:
+			last_spawned.release_player_control()
+			return
+	
 	var module_instance = module_scene.instantiate() as Module
 	module_instance.block = %BlockFactory.get_random_block()
 	add_child(module_instance)
