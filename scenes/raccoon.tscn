@@ -1,17 +1,143 @@
-[gd_scene load_steps=3 format=3 uid="uid://chq215og6y1su"]
+[gd_scene load_steps=11 format=3 uid="uid://chq215og6y1su"]
 
 [ext_resource type="ArrayMesh" uid="uid://cagcjdcgphu8j" path="res://resources/raccoon.res" id="1_te2mp"]
 [ext_resource type="ArrayMesh" uid="uid://ci5t2cccl3nig" path="res://resources/trash.res" id="2_u50g8"]
 
+[sub_resource type="Animation" id="Animation_nj1yx"]
+resource_name = "Jump"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.00361085, -0.0388832, 0.0923956, 0.994956, 0.0333333, 1, 0, 0, 0.0924662, 0.995716, 0.1, 1, 0.00269398, 0.0640228, 0.0419549, 0.997063, 0.266667, 1, -0.00264137, 0.0312557, -0.0841669, 0.995958, 0.366667, 1, 0, 0, 0.0227484, 0.999741, 0.533333, 1, 0, 0, 0, 1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.9, 1), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node3D/RaccoonMesh")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.079539, 1.21884, 0.0236888, 0.2, 1, -0.0844626, 1.50881, 0.0231119, 0.3, 1, -0.0829215, 1.03301, 0.0236888, 0.433333, 1, -0.079539, 1.21884, 0.0236888, 0.533333, 1, -0.079539, 1.21278, 0.0236888, 0.7, 1, -0.079539, 1.21884, 0.0236888)
+
+[sub_resource type="Animation" id="Animation_bhfhx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/RaccoonMesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.079539, 1.21884, 0.0236888)
+
+[sub_resource type="Animation" id="Animation_y82pb"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.05, -0.25, 0, 0.25, 0, -0.05, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.05, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.53333, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2twwa"]
+_data = {
+"Idle": SubResource("Animation_y82pb"),
+"Jump": SubResource("Animation_nj1yx"),
+"RESET": SubResource("Animation_bhfhx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ya5i"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nwm6n"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_puwoh"]
+fadein_time = 0.2
+break_loop_at_end = true
+autorestart = true
+autorestart_delay = 0.0
+autorestart_random_delay = 1.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f8uk1"]
+graph_offset = Vector2(-180.48, 536.64)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_nwm6n")
+nodes/Animation/position = Vector2(70, 590)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3ya5i")
+"nodes/Animation 2/position" = Vector2(70, 760)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_puwoh")
+nodes/OneShot/position = Vector2(240, 540)
+nodes/output/position = Vector2(420, 550)
+node_connections = [&"OneShot", 0, &"Animation 2", &"OneShot", 1, &"Animation", &"output", 0, &"OneShot"]
+
 [node name="Raccoon" type="Node3D"]
+transform = Transform3D(0.999142, -0.013996, 0.0389795, 0.0140066, 0.999902, 0, -0.0389756, 0.00054597, 0.99924, 0, 0, 0)
 
 [node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.979902, -0.183578, -0.0780415, 0.18414, 0.9829, 1.39698e-09, 0.076707, -0.0143706, 0.99695, 0, 0, 0)
 
-[node name="Raccoon" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(33.9776, 5.90951e-08, -2.5071, 2.5071, -1.60394e-06, 33.9776, -5.90951e-08, -34.07, -1.60394e-06, -0.183533, 1.32949, 0)
+[node name="RaccoonMesh" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(34.068, 0.304448, 0.198549, -0.22034, 2.4974, 33.9776, 0.289068, -33.977, 2.49922, -0.079539, 1.21884, 0.0236888)
 mesh = ExtResource("1_te2mp")
 skeleton = NodePath("../..")
 
-[node name="Trash" type="MeshInstance3D" parent="Node3D"]
+[node name="TrashMesh" type="MeshInstance3D" parent="Node3D"]
 mesh = ExtResource("2_u50g8")
 skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2twwa")
+}
+playback_auto_capture = false
+
+[node name="AnimationTree" type="AnimationTree" parent="Node3D"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendTree_f8uk1")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
