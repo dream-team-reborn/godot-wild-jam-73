@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://l0uot0e12qsc"]
 
 [ext_resource type="Script" path="res://scripts/module.gd" id="1_njp28"]
-[ext_resource type="ArrayMesh" uid="uid://dltptbaj7m8qy" path="res://resources/module_x.res" id="2_hpgbh"]
+[ext_resource type="ArrayMesh" uid="uid://3e66piwgk5nj" path="res://resources/module_i.res" id="2_skveh"]
 [ext_resource type="Texture2D" uid="uid://cbgqnaixm1kon" path="res://icon.svg" id="3_sxsw4"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ysy5i"]
-radius = 2.0
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u7uq3"]
 
 [node name="Module" type="RigidBody3D"]
 collision_layer = 2
@@ -18,10 +17,10 @@ max_contacts_reported = 2
 script = ExtResource("1_njp28")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_ysy5i")
+shape = SubResource("ConvexPolygonShape3D_u7uq3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("2_hpgbh")
+mesh = ExtResource("2_skveh")
 
 [node name="ShadowProjector" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.5, 0)

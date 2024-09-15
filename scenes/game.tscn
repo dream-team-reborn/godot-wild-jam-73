@@ -13,10 +13,10 @@
 [sub_resource type="PrismMesh" id="PrismMesh_r4qbm"]
 size = Vector3(1, 1, 0.1)
 
-[sub_resource type="Environment" id="Environment_g8yu1"]
+[sub_resource type="Environment" id="Environment_384jw"]
 background_mode = 1
-background_color = Color(0.193233, 0.508982, 0.521515, 1)
-ambient_light_color = Color(0.180415, 0.414929, 0.530252, 1)
+background_color = Color(0.27228, 0.36, 0.2376, 1)
+background_energy_multiplier = 0.9
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_fnq3s"]
 
@@ -54,7 +54,7 @@ script = ExtResource("6_08ya2")
 script = ExtResource("2_4aiat")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g8yu1")
+environment = SubResource("Environment_384jw")
 camera_attributes = SubResource("CameraAttributesPhysical_fnq3s")
 compositor = SubResource("Compositor_3uttq")
 
