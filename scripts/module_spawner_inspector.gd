@@ -9,10 +9,11 @@ var _increments_per_sec: Dictionary
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_timer()
-	get_parent().connect("child_entered_tree", _on_entered_tree)
+	#get_parent().connect("child_entered_tree", _on_entered_tree)
 	get_parent().connect("child_exiting_tree", _on_exiting_tree)
 	#GlobalEventBus.connect("stat_delta", _on_stat_delta)
 	#GlobalEventBus.connect("stat_changed", _on_stat_changed)
+	GlobalEventBus.connect("block_placed", _on_block_placed)
 	for k in stats_per_sec:
 		_increments_per_sec[k] = 0
 	for k in stats:
@@ -46,8 +47,8 @@ func _on_timer_timeout() -> void:
 					highest = node
 	_send_highest_change_signal(highest)
 
-func _on_entered_tree(node: Node) -> void:
-	var module = node as Module
+func _on_block_placed(block: Object) -> void:
+	var module = block as Module
 	if module:
 		for k in stats_per_sec:
 			var value = module.block.get(k)

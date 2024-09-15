@@ -64,7 +64,9 @@ func change_state(new_state: State):
 	
 	match new_state:
 		State.MOVING: set_collision_mask(LAYER_ALL)
-		State.PLACED:  set_collision_mask(LAYER_ALL)
+		State.PLACED: 
+			set_collision_mask(LAYER_ALL)
+			GlobalEventBus.publish("block_placed", [self])
 		
 func _on_move(direction: Vector2):
 	current_mov_dir = direction
