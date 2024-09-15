@@ -9,9 +9,10 @@
 [node name="Module" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 3
-mass = 1000.0
+mass = 10.0
 gravity_scale = 3.0
 freeze_mode = 1
+continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 2
 script = ExtResource("1_njp28")
