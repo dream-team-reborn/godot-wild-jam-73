@@ -56,3 +56,4 @@ func _on_move(direction: Vector2):
 
 func release_player_control():
 	change_state(State.FALLING)
+	linear_velocity = Vector3(0, -20, 0)

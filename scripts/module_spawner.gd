@@ -19,14 +19,10 @@ func _on_spawn_module():
 		if last_spawned.state == Module.State.MOVING:
 			last_spawned.release_player_control()
 			return
+		last_spawned.release_player_control()
 	
 	var module_instance = module_scene.instantiate() as Module
 	module_instance.block = %BlockFactory.get_random_block()
 	add_child(module_instance)
-	
-	if last_spawned != null:
-		last_spawned.release_player_control()
-	
 	last_spawned = module_instance
-	
 	module_instance.setup(%SpawnerMesh.global_position + POSITION_OFFSET)
