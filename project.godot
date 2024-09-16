@@ -29,6 +29,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalEventBus="*res://scenes/global_event_bus.tscn"
+GameMan="*res://scripts/game_manager.gd"
 
 [display]
 

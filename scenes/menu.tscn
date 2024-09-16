@@ -111,6 +111,7 @@ theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_d868r")
 theme_override_font_sizes/font_size = 50
+toggle_mode = true
 text = "Weird Colors"
 
 [node name="Sound" type="Button" parent="PopupMenu/CenterContainer/VBoxContainer"]
@@ -120,6 +121,7 @@ theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_d868r")
 theme_override_font_sizes/font_size = 50
+toggle_mode = true
 text = "Sound ON/OFF"
 
 [node name="Exit" type="Button" parent="PopupMenu/CenterContainer/VBoxContainer"]
@@ -134,6 +136,6 @@ text = "Exit"
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="PopupMenu/CenterContainer/VBoxContainer/WeirdColors" to="." method="_on_weird_colors_pressed"]
-[connection signal="pressed" from="PopupMenu/CenterContainer/VBoxContainer/Sound" to="." method="_on_sound_pressed"]
+[connection signal="toggled" from="PopupMenu/CenterContainer/VBoxContainer/WeirdColors" to="." method="_on_weird_colors_toggled"]
+[connection signal="toggled" from="PopupMenu/CenterContainer/VBoxContainer/Sound" to="." method="_on_sound_toggled"]
 [connection signal="pressed" from="PopupMenu/CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,15 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=23 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="PackedScene" uid="uid://crwbsyx3mdxqh" path="res://scenes/gui_manager.tscn" id="1_n0tbr"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="2_4aiat"]
 [ext_resource type="Script" path="res://scenes/camera_3d.gd" id="2_xnbdw"]
 [ext_resource type="PackedScene" uid="uid://c0d66mg86sny" path="res://scenes/block_factory.tscn" id="3_eu714"]
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="4_3nxp3"]
 [ext_resource type="Script" path="res://scenes/debug_text_update.gd" id="5_qtm6v"]
 [ext_resource type="Script" path="res://scripts/module_spawner_inspector.gd" id="6_8mp6j"]
 [ext_resource type="Script" path="res://scenes/spawn_point_mesh.gd" id="6_08ya2"]
 [ext_resource type="ArrayMesh" uid="uid://mgejnivi8jog" path="res://resources/platform.res" id="8_03xcv"]
+[ext_resource type="Script" path="res://scenes/weird_light.gd" id="11_3ifuf"]
 [ext_resource type="Script" path="res://scenes/trash_panda_generator.gd" id="11_4ek1o"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_r4qbm"]
@@ -45,6 +45,8 @@ fill_from = Vector2(0.497863, 0.495726)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w42qr"]
 disable_ambient_light = true
 albedo_texture = SubResource("GradientTexture2D_0tk7k")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6her2"]
 
 [node name="Game" type="Node3D"]
 
@@ -99,10 +101,6 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 layers = 3
 mesh = ExtResource("8_03xcv")
 
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("4_3nxp3")
-
 [node name="Control" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -132,3 +130,55 @@ script = ExtResource("11_4ek1o")
 [node name="Grass" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_xojq4")
 surface_material_override/0 = SubResource("StandardMaterial3D_w42qr")
+
+[node name="WeirdLights" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+visible = false
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+gravity_scale = 0.0
+script = ExtResource("11_3ifuf")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WeirdLights"]
+transform = Transform3D(1, 0, 0, 0, 0.88193, 0.471381, 0, -0.471381, 0.88193, 1.90735e-06, 14.4734, 31.9261)
+layers = 3
+light_color = Color(0.325601, 0.640582, 0.523221, 1)
+light_energy = 3.111
+spot_range = 68.673
+spot_attenuation = -0.08
+spot_angle = 25.71
+spot_angle_attenuation = 0.378929
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="WeirdLights"]
+transform = Transform3D(-4.37114e-08, -0.471012, 0.882127, 0, 0.882127, 0.471012, -1, 2.05886e-08, -3.8559e-08, 32, 14.473, 0)
+layers = 3
+light_color = Color(0.399573, 0.3264, 0.64, 1)
+light_energy = 3.111
+spot_range = 68.673
+spot_attenuation = -0.08
+spot_angle = 25.71
+spot_angle_attenuation = 0.378929
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="WeirdLights"]
+transform = Transform3D(-1, 4.11772e-08, -7.7118e-08, 0, 0.882127, 0.471012, 8.74228e-08, 0.471012, -0.882127, 0, 14.473, -32)
+layers = 3
+light_color = Color(0.64, 0.525013, 0.3264, 1)
+light_energy = 3.111
+spot_range = 68.673
+spot_attenuation = -0.08
+spot_angle = 25.71
+spot_angle_attenuation = 0.378929
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="WeirdLights"]
+transform = Transform3D(-4.37114e-08, 0.471012, -0.882127, 0, 0.882127, 0.471012, 1, 2.05886e-08, -3.8559e-08, -32, 14.473, 0)
+layers = 3
+light_color = Color(0.556373, 0.64, 0.3264, 1)
+light_energy = 3.111
+spot_range = 68.673
+spot_attenuation = -0.08
+spot_angle = 25.71
+spot_angle_attenuation = 0.378929
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WeirdLights"]
+mesh = SubResource("SphereMesh_6her2")

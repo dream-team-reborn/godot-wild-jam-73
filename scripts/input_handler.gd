@@ -4,7 +4,7 @@ func _process(delta: float) -> void:
 	var horizontal = Input.get_axis("move_left", "move_right")
 	var vertical = Input.get_axis("move_down", "move_up")
 	
-	match %GameManager.game_state:
+	match GameMan.game_state:
 		GameManager.GameState.BLOCK_PLACEMENT:
 			var move_direction = - Vector2(vertical, horizontal)
 			move_direction = move_direction.rotated(%Camera3D.rotation.y)
