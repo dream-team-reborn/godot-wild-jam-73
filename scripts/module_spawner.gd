@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 	
 func _on_block_selected(block: Block) -> void:
 	_selected_block = block
+	_on_spawn_module()
 	
 func _on_spawn_module():
 	if _selected_block == null:
