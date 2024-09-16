@@ -86,5 +86,54 @@ text = "Trash Panda 2:
 Trash Tower!"
 horizontal_alignment = 1
 
+[node name="PopupMenu" type="PopupPanel" parent="."]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(500, 500)
+unresizable = false
+transparent = true
+
+[node name="CenterContainer" type="CenterContainer" parent="PopupMenu"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 496.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="WeirdColors" type="Button" parent="PopupMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_d868r")
+theme_override_font_sizes/font_size = 50
+text = "Weird Colors"
+
+[node name="Sound" type="Button" parent="PopupMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_d868r")
+theme_override_font_sizes/font_size = 50
+text = "Sound ON/OFF"
+
+[node name="Exit" type="Button" parent="PopupMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_d868r")
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PopupMenu/CenterContainer/VBoxContainer/WeirdColors" to="." method="_on_weird_colors_pressed"]
+[connection signal="pressed" from="PopupMenu/CenterContainer/VBoxContainer/Sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="PopupMenu/CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
