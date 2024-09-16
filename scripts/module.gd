@@ -14,6 +14,7 @@ const DESTROY_Y = -3
 
 var particle_scene = preload("res://scenes/particles.tscn")
 var rng = RandomNumberGenerator.new()
+var other_node: RigidBody3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,7 +45,9 @@ func _physics_process(delta):
 		timer.timeout.connect(_destroy_module)
 		$MeshInstance3D.visible = false
 		add_child(timer)
-
+	
+	stick_to_other_node(other_node)
+	
 func _setup_shape():
 	$CollisionShape3D.set_shape(block.mesh.create_convex_shape())
 	$MeshInstance3D.mesh = block.mesh
@@ -52,8 +55,15 @@ func _setup_shape():
 	var rnd_scale = rng.randf_range(0.9, 1.1)
 	scale = Vector3(rnd_scale,rnd_scale,rnd_scale)
 
-func _on_body_entered(_body: Node) -> void:
+func _on_body_entered(body: Node) -> void:
 	if state != State.PLACED: change_state(State.PLACED)
+	if body as RigidBody3D:
+		if (
+			other_node == null
+			or body.global_position.y < other_node.global_position.y
+			or (other_node.global_position - global_position).length() < 3
+			):
+			other_node = body
 	pass
 
 func change_state(new_state: State):
@@ -80,3 +90,12 @@ func release_player_control():
 
 func _destroy_module():
 	queue_free()
+
+func stick_to_other_node(other_node):
+	var force = Vector3(0,0,0)
+	if other_node != null:
+		var distance = other_node.global_position - global_position
+		var dist_len = distance.length()
+		if .5 < dist_len and dist_len < 1.5:
+			force = distance.normalized()
+	global_position += force
