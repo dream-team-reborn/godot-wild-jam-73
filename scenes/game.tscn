@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://clxbd7k7xwawk"]
+[gd_scene load_steps=25 format=3 uid="uid://clxbd7k7xwawk"]
 
 [ext_resource type="Script" path="res://scripts/module_spawner.gd" id="1_3ofxf"]
 [ext_resource type="PackedScene" uid="uid://crwbsyx3mdxqh" path="res://scenes/gui_manager.tscn" id="1_n0tbr"]
@@ -11,6 +11,8 @@
 [ext_resource type="ArrayMesh" uid="uid://mgejnivi8jog" path="res://resources/platform.res" id="8_03xcv"]
 [ext_resource type="Script" path="res://scenes/weird_light.gd" id="11_3ifuf"]
 [ext_resource type="Script" path="res://scenes/trash_panda_generator.gd" id="11_4ek1o"]
+[ext_resource type="ArrayMesh" uid="uid://ci5t2cccl3nig" path="res://resources/trash.res" id="12_mmwwm"]
+[ext_resource type="ArrayMesh" uid="uid://cagcjdcgphu8j" path="res://resources/raccoon.res" id="13_nc6jb"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_r4qbm"]
 size = Vector3(1, 1, 0.1)
@@ -182,3 +184,70 @@ spot_angle_attenuation = 0.378929
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeirdLights"]
 mesh = SubResource("SphereMesh_6her2")
+
+[node name="TrashCluster" type="Node3D" parent="."]
+
+[node name="Trash" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(0.738871, 0, 0, 0, 1, 0, 0, 0, 0.738871, 12.0834, 1.5021, -9.72701)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Trash7" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(0.731632, 0, 0, 0, 0.699429, 0, 0, 0, 0.735305, 9.35593, 1.5021, -10.1846)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Trash4" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0718, 1.5021, -11.4918)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Trash2" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7737, 1.5021, -13.5344)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Trash8" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52215, 1.5021, -14.1019)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Trash3" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9531, 1.5021, -11.3284)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Trash5" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(1.16004, 0, 0, 0, 1, 0, 0, 0, 1.20216, 8.68329, 1.5021, -12.0606)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Trash6" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(1.16004, 0, 0, 0, 1, 0, 0, 0, 1.20216, 13.0582, 1.5021, -13.6531)
+mesh = ExtResource("12_mmwwm")
+skeleton = NodePath("../..")
+
+[node name="Raccoon" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(23.5506, 44.1063, 1.92795e-06, 0, -2.18557e-06, 50, 44.1063, -23.5506, -1.02943e-06, 6.8967, 1.84394, -11.3463)
+mesh = ExtResource("13_nc6jb")
+skeleton = NodePath("../..")
+
+[node name="Raccoon2" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(-38.9122, 31.3982, 1.37246e-06, 0, -2.18557e-06, 50, 31.3982, 38.9122, 1.7009e-06, 13.0654, 1.84394, -8.49378)
+mesh = ExtResource("13_nc6jb")
+skeleton = NodePath("../..")
+
+[node name="Raccoon3" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(-21.8726, 25.9547, 21.1647, 28.0827, 0.441157, 28.481, 18.247, 30.4329, -18.4631, 8.53646, 2.88127, -11.9916)
+mesh = ExtResource("13_nc6jb")
+skeleton = NodePath("../..")
+
+[node name="Raccoon4" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(2.10405, 39.8538, -2.69194, 28.0827, 0.441157, 28.481, 28.4066, -3.38806, -27.9568, 11.0382, 2.88127, -11.2761)
+mesh = ExtResource("13_nc6jb")
+skeleton = NodePath("../..")
+
+[node name="Raccoon5" type="MeshInstance3D" parent="TrashCluster"]
+transform = Transform3D(-28.3097, 30.7531, 27.4373, 35.1033, 0.551446, 35.6013, 21.5944, 39.4201, -21.9029, 12.8391, 2.71967, -13.8151)
+mesh = ExtResource("13_nc6jb")
+skeleton = NodePath("../..")
