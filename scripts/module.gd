@@ -23,14 +23,15 @@ var is_spinning = false
 func _ready() -> void:
 	pass
 
-func setup(initial_position: Vector3):
-	GlobalEventBus.connect("move", _on_move)
-	GlobalEventBus.connect("spin", _on_spin)
-	
+func setup(initial_position: Vector3, _selected_block):
 	global_position = initial_position
+	block = _selected_block
 	_setup_shape()
 	change_state(State.MOVING)
 	set_collision_layer_value(LAYER_MODULE, true)
+	
+	GlobalEventBus.connect("move", _on_move)
+	GlobalEventBus.connect("spin", _on_spin)
 	
 func _physics_process(delta):
 	if state == State.MOVING:

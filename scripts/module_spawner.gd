@@ -28,7 +28,6 @@ func _on_spawn_module():
 		last_spawned.release_player_control()
 	
 	var module_instance = module_scene.instantiate() as Module
-	module_instance.block = _selected_block
+	module_instance.setup(%SpawnerMesh.global_position + POSITION_OFFSET, _selected_block)
 	add_child(module_instance)
 	last_spawned = module_instance
-	module_instance.setup(%SpawnerMesh.global_position + POSITION_OFFSET)
