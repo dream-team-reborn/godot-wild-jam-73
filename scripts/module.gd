@@ -96,6 +96,8 @@ func stick_to_other_node(other_node):
 	if other_node != null:
 		var distance = other_node.global_position - global_position
 		var dist_len = distance.length()
-		if .5 < dist_len and dist_len < 1.5:
+		if 1.5 < dist_len:
+			other_node = null
+		elif .5 < dist_len:
 			force = distance.normalized()
 	global_position += force
