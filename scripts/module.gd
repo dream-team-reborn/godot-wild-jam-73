@@ -108,6 +108,7 @@ func stick_to_other_node(other_node):
 			other_node = null
 		elif .5 < dist_len:
 			force = distance.normalized()
+			global_rotation += (other_node.global_rotation - global_rotation) / 2
 	global_position += force
 
 func spin():
