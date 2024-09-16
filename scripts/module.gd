@@ -12,7 +12,8 @@ var current_mov_dir : Vector2
 
 const DESTROY_Y = -3
 
-var particle_scene = preload("res://scenes/particles.tscn")
+var explosion_scene = preload("res://scenes/explosion_particles.tscn")
+var raccoon_gain_scene = preload("res://scenes/more_raccoons.tscn")
 var rng = RandomNumberGenerator.new()
 var other_node: RigidBody3D = null
 
@@ -37,9 +38,7 @@ func _physics_process(delta):
 		GlobalEventBus.publish("module_y", [position.y])
 	
 	if global_position.y < DESTROY_Y and state != State.DESTROYING:
-		var particle_instance = particle_scene.instantiate() as GPUParticles3D
-		particle_instance.global_rotation = Vector3(0, 1, 0)
-		add_child(particle_instance)
+		start_particle(explosion_scene.instantiate())
 		change_state(State.DESTROYING)
 		var timer = Timer.new()
 		timer.autostart = true
@@ -80,7 +79,9 @@ func change_state(new_state: State):
 	match new_state:
 		State.MOVING: 
 			set_collision_mask(LAYER_ALL)
-		State.PLACED: 
+		State.PLACED:
+			if block.population > 0:
+				start_particle(raccoon_gain(block.population))
 			set_collision_mask(LAYER_ALL)
 			GlobalEventBus.publish("block_placed", [self])
 		State.DESTROYING: 
@@ -114,3 +115,13 @@ func stick_to_other_node(other_node):
 func spin():
 	angular_velocity += Vector3(0, .25, 0)	
 	angular_velocity.y = clampf(angular_velocity.y, 0, 20)
+
+func start_particle(particle_instance: GPUParticles3D):
+	particle_instance.global_rotation = Vector3(0, 1, 0)
+	particle_instance.emitting = true
+	add_child(particle_instance)
+
+func raccoon_gain(population):
+	var raccoon_gain_instance = raccoon_gain_scene.instantiate() as GPUParticles3D
+	raccoon_gain_instance.amount = population
+	return raccoon_gain_instance
