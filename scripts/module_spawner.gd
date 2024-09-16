@@ -21,6 +21,9 @@ func _on_block_selected(block: Block) -> void:
 	_selected_block = block
 	
 func _on_spawn_module():
+	if _selected_block == null:
+		return
+	
 	if last_spawned != null:
 		if last_spawned.state == Module.State.MOVING:
 			last_spawned.release_player_control()
