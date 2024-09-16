@@ -29,6 +29,7 @@ func setup(initial_position: Vector3, _selected_block):
 	_setup_shape()
 	change_state(State.MOVING)
 	set_collision_layer_value(LAYER_MODULE, true)
+	rotation = Vector3(0, rng.randf_range(-PI, PI), 0)
 	
 	GlobalEventBus.connect("move", _on_move)
 	GlobalEventBus.connect("spin", _on_spin)
