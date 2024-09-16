@@ -32,7 +32,7 @@ func _setup_choose_menu():
 			child.block = block
 			child.index = index
 			child.pressed.connect(_on_gui_block_pressed)
-			%HBoxContainer.add_child(child)
+			%HBoxBlockSelector.add_child(child)
 	
 func _on_stat_delta(stat: String, delta: int) -> void:
 	match stat:

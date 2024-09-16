@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdj2oke3x7sjb"]
+
+[ext_resource type="Script" path="res://scenes/gui_block_resource.gd" id="1_a6mib"]
+[ext_resource type="Texture2D" uid="uid://cgo23sb34p5vi" path="res://assets/dollar.png" id="1_ncv7s"]
+
+[node name="HBoxContainer" type="BoxContainer"]
+mouse_filter = 2
+alignment = 1
+script = ExtResource("1_a6mib")
+
+[node name="Texture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 20)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("1_ncv7s")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
