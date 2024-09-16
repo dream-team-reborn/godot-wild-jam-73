@@ -3,6 +3,44 @@
 [ext_resource type="ArrayMesh" uid="uid://cagcjdcgphu8j" path="res://resources/raccoon.res" id="1_te2mp"]
 [ext_resource type="ArrayMesh" uid="uid://ci5t2cccl3nig" path="res://resources/trash.res" id="2_u50g8"]
 
+[sub_resource type="Animation" id="Animation_y82pb"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/RaccoonMesh:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(0.05, 0, 0, 0, 0, -0.05, 0, 0, 0, 0, 0.05, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.43333, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/TrashMesh:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.05, -0.25, 0, 0.25, 0, -0.05, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node3D/TrashMesh:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.05, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.53333, 2)
+}
+
 [sub_resource type="Animation" id="Animation_nj1yx"]
 resource_name = "Jump"
 tracks/0/type = "rotation_3d"
@@ -54,33 +92,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, -0.079539, 1.21884, 0.0236888)
 
-[sub_resource type="Animation" id="Animation_y82pb"]
-resource_name = "Idle"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.05, -0.25, 0, 0.25, 0, -0.05, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1, 2)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation:z")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.05, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1.53333, 2)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2twwa"]
 _data = {
 "Idle": SubResource("Animation_y82pb"),
@@ -113,13 +124,12 @@ nodes/output/position = Vector2(420, 550)
 node_connections = [&"OneShot", 0, &"Animation 2", &"OneShot", 1, &"Animation", &"output", 0, &"OneShot"]
 
 [node name="Raccoon" type="Node3D"]
-transform = Transform3D(0.999142, -0.013996, 0.0389795, 0.0140066, 0.999902, 0, -0.0389756, 0.00054597, 0.99924, 0, 0, 0)
+transform = Transform3D(0.999672, -0.0140034, -0.0214271, 0.0140066, 0.999902, 9.99518e-10, 0.021425, -0.000300122, 0.99977, 0, 0, 0)
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.979902, -0.183578, -0.0780415, 0.18414, 0.9829, 1.39698e-09, 0.076707, -0.0143706, 0.99695, 0, 0, 0)
 
 [node name="RaccoonMesh" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(34.068, 0.304448, 0.198549, -0.22034, 2.4974, 33.9776, 0.289068, -33.977, 2.49922, -0.079539, 1.21884, 0.0236888)
+transform = Transform3D(34.0366, 1.50584, 0, 6.58223e-08, -1.48779e-06, 34.07, 1.50584, -34.0367, -1.48925e-06, -0.079539, 1.21884, 0.0236888)
 mesh = ExtResource("1_te2mp")
 skeleton = NodePath("../..")
 
@@ -138,6 +148,6 @@ playback_auto_capture = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeBlendTree_f8uk1")
 anim_player = NodePath("../AnimationPlayer")
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
+parameters/OneShot/active = true
+parameters/OneShot/internal_active = true
 parameters/OneShot/request = 0
