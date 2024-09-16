@@ -16,12 +16,15 @@ var particle_scene = preload("res://scenes/particles.tscn")
 var rng = RandomNumberGenerator.new()
 var other_node: RigidBody3D = null
 
+var is_spinning = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func setup(initial_position: Vector3):
 	GlobalEventBus.connect("move", _on_move)
+	GlobalEventBus.connect("spin", _on_spin)
 	
 	global_position = initial_position
 	_setup_shape()
@@ -47,6 +50,8 @@ func _physics_process(delta):
 		add_child(timer)
 	
 	stick_to_other_node(other_node)
+	if is_spinning:
+		spin()
 	
 func _setup_shape():
 	$CollisionShape3D.set_shape(block.mesh.create_convex_shape())
@@ -84,6 +89,9 @@ func change_state(new_state: State):
 func _on_move(direction: Vector2):
 	current_mov_dir = direction
 
+func _on_spin():
+	is_spinning = not is_spinning
+
 func release_player_control():
 	change_state(State.FALLING)
 	linear_velocity = Vector3(0, -10, 0)
@@ -101,3 +109,7 @@ func stick_to_other_node(other_node):
 		elif .5 < dist_len:
 			force = distance.normalized()
 	global_position += force
+
+func spin():
+	angular_velocity += Vector3(0, .25, 0)	
+	angular_velocity.y = clampf(angular_velocity.y, 0, 20)

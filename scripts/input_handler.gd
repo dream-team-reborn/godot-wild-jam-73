@@ -19,3 +19,5 @@ func _input(event: InputEvent) -> void:
 		GlobalEventBus.publish("shape_selected", [])
 	elif event.is_action_pressed("escape"):
 		GlobalEventBus.publish("escape", [])
+	elif event.is_action_pressed("spin"):
+		GlobalEventBus.publish("spin", [])

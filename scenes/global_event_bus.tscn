@@ -103,3 +103,6 @@ params = Array[ExtResource("3_8my5v")]([SubResource("Resource_ya57c")])
 [node name="block_destroyed" type="Node" parent="."]
 script = ExtResource("2_23oks")
 params = Array[ExtResource("3_8my5v")]([SubResource("Resource_mtasa"), SubResource("Resource_ug0ib")])
+
+[node name="spin" type="Node" parent="."]
+script = ExtResource("2_23oks")
