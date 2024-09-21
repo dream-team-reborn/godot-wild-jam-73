@@ -46,6 +46,7 @@ func _physics_process(delta):
 		timer.autostart = true
 		timer.one_shot = true
 		timer.wait_time = 10
+		Music.find_child("Scream").play()
 		timer.timeout.connect(_destroy_module)
 		$MeshInstance3D.visible = false
 		add_child(timer)
@@ -86,6 +87,7 @@ func change_state(new_state: State):
 				start_particle(raccoon_gain(block.population))
 			set_collision_mask(LAYER_ALL)
 			GlobalEventBus.publish("block_placed", [self])
+			Music.find_child("Pop").play()
 		State.DESTROYING: 
 			queue_free()
 		
