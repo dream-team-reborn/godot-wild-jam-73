@@ -87,7 +87,7 @@ func change_state(new_state: State):
 			set_collision_mask(LAYER_ALL)
 			GlobalEventBus.publish("block_placed", [self])
 		State.DESTROYING: 
-			GlobalEventBus.publish("block_destroyed", [previous_state, self])
+			queue_free()
 		
 func _on_move(direction: Vector2):
 	current_mov_dir = direction

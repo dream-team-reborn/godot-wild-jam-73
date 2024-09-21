@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crwbsyx3mdxqh"]
+[gd_scene load_steps=13 format=3 uid="uid://crwbsyx3mdxqh"]
 
 [ext_resource type="Script" path="res://scripts/gui_manager.gd" id="1_igwfx"]
 [ext_resource type="Script" path="res://resources/block.gd" id="2_hnmho"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://ovp7w5io5fsu" path="res://assets/flask_half.png" id="6_erc6b"]
 [ext_resource type="Resource" uid="uid://c62wyn0spwnsj" path="res://resources/block_4.tres" id="6_pi2e3"]
 [ext_resource type="Texture2D" uid="uid://b6j74md1sh0g1" path="res://assets/suit_hearts.png" id="7_fmyhs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksixv"]
+bg_color = Color(0.216843, 0.305717, 0.202858, 1)
 
 [node name="GuiManager" type="Control"]
 layout_mode = 3
@@ -169,6 +172,7 @@ theme_override_constants/margin_bottom = 20
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ksixv")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer"]
 layout_mode = 2

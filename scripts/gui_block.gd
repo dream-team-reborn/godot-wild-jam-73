@@ -18,7 +18,7 @@ func _ready() -> void:
 	%TextureButton.pressed.connect(_on_texture_button_pressed)
 	for k in resources:
 		var child = block_resource_scene.instantiate() as GUIBlockResource
-		print("%s: %s -> %s" % [k, block.get(k), resources[k].load_path])
+		#print("%s: %s -> %s" % [k, block.get(k), resources[k].load_path])
 		child.setup(resources[k], block.get(k))
 		%ResourceContainer.add_child(child)
 
