@@ -49,7 +49,6 @@ func _on_block_placed(block: Object) -> void:
 	var instance_id = block.get_instance_id()
 	var module = block as Module
 	if module and !_placed.has(instance_id):
-		print("Placed from: " + str(instance_id))
 		_placed.append(instance_id)
 		for k in stats_per_sec:
 			var value = module.block.get(k)
@@ -69,7 +68,6 @@ func _on_block_placed(block: Object) -> void:
 func _on_exiting_tree(node: Node) -> void:
 	var instance_id = node.get_instance_id()
 	var module = node as Module
-	print("Exit from: " + str(instance_id) + " present in placed: " + str(_placed.has(instance_id)))
 	if module and _placed.has(instance_id):
 		_placed.erase(instance_id)
 		for k in stats_per_sec:
