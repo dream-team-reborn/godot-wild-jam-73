@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvxpsf3wyo8qj"]
+[gd_scene load_steps=4 format=3 uid="uid://bvxpsf3wyo8qj"]
 
 [ext_resource type="ArrayMesh" uid="uid://cagcjdcgphu8j" path="res://resources/raccoon.res" id="1_oxkug"]
+[ext_resource type="Script" path="res://scripts/freeable_particles.gd" id="2_2tf5u"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8he6d"]
 lifetime_randomness = 1.0
@@ -27,8 +28,11 @@ scale_min = 50.0
 scale_max = 60.0
 
 [node name="Particles" type="GPUParticles3D"]
+emitting = false
 amount = 100
 lifetime = 2.0
+one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_8he6d")
 draw_pass_1 = ExtResource("1_oxkug")
+script = ExtResource("2_2tf5u")

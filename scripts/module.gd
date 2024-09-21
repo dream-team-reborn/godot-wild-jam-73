@@ -89,7 +89,7 @@ func change_state(new_state: State):
 			GlobalEventBus.publish("block_placed", [self])
 			Music.find_child("Pop").play()
 		State.DESTROYING: 
-			queue_free()
+			call_deferred("queue_free")
 		
 func _on_move(direction: Vector2):
 	current_mov_dir = direction
@@ -121,9 +121,10 @@ func spin():
 	angular_velocity.y = clampf(angular_velocity.y, 0, 20)
 
 func start_particle(particle_instance: GPUParticles3D):
+	get_parent().add_child(particle_instance)
+	particle_instance.global_position = self.global_position
 	particle_instance.global_rotation = Vector3(0, 1, 0)
 	particle_instance.emitting = true
-	add_child(particle_instance)
 
 func raccoon_gain(population):
 	var raccoon_gain_instance = raccoon_gain_scene.instantiate() as GPUParticles3D

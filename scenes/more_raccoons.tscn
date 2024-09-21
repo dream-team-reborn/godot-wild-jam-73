@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5gpbwpimu74s"]
+[gd_scene load_steps=4 format=3 uid="uid://b5gpbwpimu74s"]
 
 [ext_resource type="ArrayMesh" uid="uid://cagcjdcgphu8j" path="res://resources/raccoon.res" id="1_o3q3p"]
+[ext_resource type="Script" path="res://scripts/freeable_particles.gd" id="2_4h45d"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qecjv"]
 emission_shape = 6
@@ -25,3 +26,4 @@ one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_qecjv")
 draw_pass_1 = ExtResource("1_o3q3p")
+script = ExtResource("2_4h45d")
