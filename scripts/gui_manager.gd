@@ -64,14 +64,35 @@ func _on_gui_block_pressed(block: Block) -> void:
 	GlobalEventBus.publish("block_selected", [block])
 
 func _update_ui(stat: String) -> void:
+	var text = ""
 	match stat:
 		"income_per_sec":
-			%CostLabel.text = "%d %+d/s" % [_money, _money_increment]
+			%CostLabel.text = _increment_text_by(_money, _money_increment)
 		"food_per_sec":
-			%FoodLabel.text = "%d %+d/s" % [_food, _food_increment]
+			%FoodLabel.text = _increment_text_by(_food, _food_increment)
 		"population":
 			%PopulationLabel.text = "%d" % [_population]
 		"water":
-			%WaterLabel.text = "%d/%d" % [_water_pos - _water_neg, _water_pos]
+			%WaterLabel.text = _consume_text_by(_water_pos - _water_neg, _water_pos)
 		"fun":
-			%FunLabel.text = "%d/%d" % [_fun_pos - _fun_neg, _fun_pos]
+			%FunLabel.text = _consume_text_by(_fun_pos - _fun_neg, _fun_pos)
+
+func _increment_text_by(total: int, increment: int) -> String:
+	var text = "%d %+d/s"
+	if total < 0 and increment < 0:
+		text = "[color=red]%d %+d/s[/color]"
+	elif total < 0:
+		text = "[color=red]%d[/color] %+d/s"
+	elif increment < 0:
+		text = "%d [color=red]%+d/s[/color]"
+	return text % [total, increment]
+
+func _consume_text_by(residue: int, total: int) -> String:
+	var text = "%d/%d"
+	if residue < 0 and total < 0:
+		text = "[color=red]%d/%d[/color]"
+	elif total < 0:
+		text = "%d/[color]%d[/color]"
+	elif residue < 0:
+		text = "[color=red]%d[/color]/%d"
+	return text % [residue, total]

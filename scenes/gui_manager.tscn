@@ -57,8 +57,7 @@ alignment = 1
 
 [node name="PopulationContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_vertical = 3
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
@@ -69,17 +68,21 @@ texture = ExtResource("2_k12re")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="PopulationLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
+[node name="PopulationLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0
-"
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "0"
+fit_content = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="IncomeContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-alignment = 1
+size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
 custom_minimum_size = Vector2(35, 35)
@@ -90,16 +93,22 @@ texture = ExtResource("4_ym7cc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="CostLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
+[node name="CostLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
 text = "0"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="FoodContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-alignment = 1
+size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
 custom_minimum_size = Vector2(35, 35)
@@ -110,17 +119,22 @@ texture = ExtResource("5_7p4cl")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="FoodLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
+[node name="FoodLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0
-"
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "0"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="WaterContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-alignment = 1
+size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
 custom_minimum_size = Vector2(35, 35)
@@ -131,16 +145,22 @@ texture = ExtResource("6_erc6b")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="WaterLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
+[node name="WaterLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
 text = "0"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="FunContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-alignment = 1
+size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
 custom_minimum_size = Vector2(35, 35)
@@ -151,10 +171,18 @@ texture = ExtResource("7_fmyhs")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="FunLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
+[node name="FunLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
 text = "0"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
