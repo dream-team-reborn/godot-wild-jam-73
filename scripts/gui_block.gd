@@ -29,7 +29,7 @@ func _ready() -> void:
 			%ResourceContainer.add_child(child)
 
 func _on_texture_button_pressed() -> void:
-	emit_signal(&"pressed", block)
+	pressed.emit(block)
 
 func _add_shortcut():
 	var inputEventKey = InputEventKey.new()

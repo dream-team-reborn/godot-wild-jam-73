@@ -1,6 +1,6 @@
 extends Node
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var horizontal = Input.get_axis("move_left", "move_right")
 	var vertical = Input.get_axis("move_down", "move_up")
 	

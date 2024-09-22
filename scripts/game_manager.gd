@@ -9,4 +9,7 @@ func _ready():
 	pass
 	
 func _on_escape():
+	back_to_menu()
+	
+func back_to_menu():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn") # Replace with function body.

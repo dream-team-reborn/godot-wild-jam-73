@@ -6,5 +6,5 @@ func _ready():
 
 	visible = true	
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	angular_velocity = Vector3(1.1, 1, 0)

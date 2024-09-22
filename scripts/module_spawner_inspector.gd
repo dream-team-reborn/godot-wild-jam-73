@@ -15,7 +15,11 @@ func _ready() -> void:
 	for k in stats_per_sec:
 		_increments_per_sec[k] = 0
 	for k in stats:
-		_stats_value[k] = {"positive": 0, "negative": 0}
+		if k == "water" or k == "fun":
+			_stats_value[k] = {"positive": 10, "negative": 0}
+		else:
+			_stats_value[k] = {"positive": 0, "negative": 0}
+
 
 func _setup_timer():
 	var timer = Timer.new()
@@ -26,24 +30,11 @@ func _setup_timer():
 	add_child(timer)
 
 func _on_timer_timeout() -> void:
-	var now = Time.get_unix_time_from_system()
 	for k in _increments_per_sec:
 		var increment = _increments_per_sec[k]
 		if increment != 0:
 			GlobalEventBus.publish("stat_delta", [k, increment])
-
-	var highest = null
-	for child in get_parent().get_children():
-		var node = child as Module
-		if node:
-			if highest == null:
-				highest = node
-			var block_pos = node.global_position
-			var highest_y = highest.global_position.y
-			if block_pos != null:
-				if highest_y < block_pos.y and node.state == Module.State.PLACED:
-					highest = node
-	_send_highest_change_signal(highest)
+	_send_highest_change_signal()
 
 func _on_block_placed(block: Object) -> void:
 	var instance_id = block.get_instance_id()
@@ -88,6 +79,17 @@ func _on_exiting_tree(node: Node) -> void:
 func _send_block_number_change_signal():
 	GlobalEventBus.publish("block_number_change", [0])
 
-func _send_highest_change_signal(highest_block):
-	if highest_block != null:
-		GlobalEventBus.publish("highest_change", [highest_block])
+func _send_highest_change_signal():
+	var highest = null
+	for child in get_parent().get_children():
+		var node = child as Module
+		if node:
+			if highest == null:
+				highest = node
+			var block_pos = node.global_position
+			var highest_y = highest.global_position.y
+			if block_pos != null:
+				if highest_y < block_pos.y and node.state == Module.State.PLACED:
+					highest = node
+	if highest != null:
+		GlobalEventBus.publish("highest_change", [highest])

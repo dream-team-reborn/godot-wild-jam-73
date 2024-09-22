@@ -6,6 +6,7 @@ enum State { MOVING, FALLING, PLACED, DESTROYING }
 const LAYER_MODULE : int = 2
 const LAYER_ALL = 0b11111111  # all Modules
 
+var initial_position: Vector3
 var block: Block
 var state : State = State.MOVING
 var current_mov_dir : Vector2
@@ -19,13 +20,10 @@ var other_node: RigidBody3D = null
 
 var is_spinning = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
-func setup(initial_position: Vector3, _selected_block):
 	global_position = initial_position
-	block = _selected_block
 	_setup_shape()
 	change_state(State.MOVING)
 	set_collision_layer_value(LAYER_MODULE, true)
@@ -33,6 +31,8 @@ func setup(initial_position: Vector3, _selected_block):
 	
 	GlobalEventBus.connect("move", _on_move)
 	GlobalEventBus.connect("spin", _on_spin)
+	GlobalEventBus.connect("end_game", _on_end_game)
+	pass
 	
 func _physics_process(delta):
 	if state == State.MOVING:
@@ -40,18 +40,9 @@ func _physics_process(delta):
 		GlobalEventBus.publish("module_y", [position.y])
 	
 	if global_position.y < DESTROY_Y and state != State.DESTROYING:
-		start_particle(explosion_scene.instantiate())
-		change_state(State.DESTROYING)
-		var timer = Timer.new()
-		timer.autostart = true
-		timer.one_shot = true
-		timer.wait_time = 10
-		Music.find_child("Scream").play()
-		timer.timeout.connect(_destroy_module)
-		$MeshInstance3D.visible = false
-		add_child(timer)
+		_destroy()
 	
-	stick_to_other_node(other_node)
+	stick_to_other_node()
 	if is_spinning:
 		spin()
 	
@@ -74,7 +65,6 @@ func _on_body_entered(body: Node) -> void:
 	pass
 
 func change_state(new_state: State):
-	var previous_state = state
 	state = new_state
 	gravity_scale = 0 if state == State.MOVING else 3
 	$ShadowProjector.visible = new_state == State.MOVING
@@ -97,14 +87,14 @@ func _on_move(direction: Vector2):
 func _on_spin():
 	is_spinning = not is_spinning
 
+func _on_end_game():
+	_destroy()
+
 func release_player_control():
 	change_state(State.FALLING)
 	linear_velocity = Vector3(0, -10, 0)
 
-func _destroy_module():
-	queue_free()
-
-func stick_to_other_node(other_node):
+func stick_to_other_node():
 	var force = Vector3(0,0,0)
 	if other_node != null:
 		var distance = other_node.global_position - global_position
@@ -130,3 +120,9 @@ func raccoon_gain(population):
 	var raccoon_gain_instance = raccoon_gain_scene.instantiate() as GPUParticles3D
 	raccoon_gain_instance.amount = population
 	return raccoon_gain_instance
+
+func _destroy() -> void:
+	start_particle(explosion_scene.instantiate())
+	change_state(State.DESTROYING)
+	Music.find_child("Scream").play()
+	$MeshInstance3D.visible = false

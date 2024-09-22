@@ -13,10 +13,6 @@ func _ready() -> void:
 	GlobalEventBus.connect("block_selected", _on_block_selected)
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func _on_block_selected(block: Block) -> void:
 	_selected_block = block
 	_on_spawn_module()
@@ -32,6 +28,7 @@ func _on_spawn_module():
 		last_spawned.release_player_control()
 	
 	var module_instance = module_scene.instantiate() as Module
-	module_instance.setup(%SpawnerMesh.global_position + POSITION_OFFSET, _selected_block)
+	module_instance.block = _selected_block
+	module_instance.initial_position = %SpawnerMesh.global_position + POSITION_OFFSET
 	add_child(module_instance)
 	last_spawned = module_instance
