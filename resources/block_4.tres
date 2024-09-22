@@ -10,6 +10,7 @@ script = ExtResource("1_vdunl")
 mesh = ExtResource("1_4h2n7")
 shadow = ExtResource("3_lctea")
 preview = ExtResource("2_l6kfi")
+name = "arcade"
 cost = -250
 income_per_sec = -5
 food_per_sec = 0

@@ -1,6 +1,7 @@
 extends Control
 
 @export var blocks: Array[Block]
+@export var timeout: int
 
 var _gui_block = preload("res://scenes/gui_block.tscn")
 
@@ -14,12 +15,20 @@ var _water_pos: int
 var _fun_neg: int
 var _fun_pos: int
 
+var _timeout_counter: float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_timeout_counter = timeout
 	GlobalEventBus.connect("stat_delta", _on_stat_delta)
 	GlobalEventBus.connect("stat_changed", _on_stat_changed)
 	_setup_choose_menu()
 	pass
+
+func _process(delta: float) -> void:
+	if %Alert.visible:
+		_timeout_counter -= delta
+		%TimerLabel.text = "%d" % _timeout_counter
 
 func _setup_choose_menu():
 	blocks.sort_custom(func(a: Block, b: Block): return a.cost > b.cost)

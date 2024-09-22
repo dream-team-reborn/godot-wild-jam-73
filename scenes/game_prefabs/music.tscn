@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bayy6hu1pauw5"]
+[gd_scene load_steps=4 format=3 uid="uid://bdp4g0kaosx0q"]
 
 [ext_resource type="AudioStream" uid="uid://55isbftyl1fp" path="res://assets/audio/indie-rock-204846.mp3" id="1_w75gw"]
 [ext_resource type="AudioStream" uid="uid://7ncliykxcld3" path="res://assets/audio/pop.mp3" id="2_bn5lo"]
@@ -9,12 +9,15 @@
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_w75gw")
 autoplay = true
+bus = &"Background"
 parameters/looping = true
 
 [node name="Pop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_bn5lo")
 max_polyphony = 3
+bus = &"Effect"
 
 [node name="Scream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_wwmgn")
 max_polyphony = 3
+bus = &"Effect"

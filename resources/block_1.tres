@@ -10,6 +10,7 @@ script = ExtResource("1_i05rl")
 mesh = ExtResource("1_jpvo0")
 shadow = ExtResource("3_jewcg")
 preview = ExtResource("2_ggjuy")
+name = "spa"
 cost = -200
 income_per_sec = 0
 food_per_sec = -1

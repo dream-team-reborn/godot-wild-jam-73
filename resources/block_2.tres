@@ -10,6 +10,7 @@ script = ExtResource("1_idxf4")
 mesh = ExtResource("1_flrk8")
 shadow = ExtResource("3_o2bkx")
 preview = ExtResource("2_f3ut1")
+name = "fast food"
 cost = -150
 income_per_sec = 0
 food_per_sec = 1

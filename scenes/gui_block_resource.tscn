@@ -1,15 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdj2oke3x7sjb"]
+[gd_scene load_steps=5 format=3 uid="uid://bdj2oke3x7sjb"]
 
 [ext_resource type="Script" path="res://scenes/gui_block_resource.gd" id="1_a6mib"]
 [ext_resource type="Texture2D" uid="uid://cgo23sb34p5vi" path="res://assets/dollar.png" id="1_ncv7s"]
 
+[sub_resource type="Shader" id="Shader_cyga0"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color = vec4(.5, .5, .5, 1.0);
+uniform vec4 sample: source_color = vec4(0, 0, 0, 1.0);
+
+void fragment(){
+  vec4 current_pixel = texture(TEXTURE, UV);
+  if(current_pixel == sample){
+    COLOR = color;
+  } else {
+    COLOR = current_pixel;
+  }
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6wrn"]
+shader = SubResource("Shader_cyga0")
+shader_parameter/color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/sample = Color(0, 0, 0, 1)
+
 [node name="HBoxContainer" type="BoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-alignment = 1
 script = ExtResource("1_a6mib")
 
 [node name="Texture" type="TextureRect" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_o6wrn")
 custom_minimum_size = Vector2(25, 20)
 layout_mode = 2
 size_flags_vertical = 4

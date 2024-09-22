@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crwbsyx3mdxqh"]
+[gd_scene load_steps=17 format=3 uid="uid://crwbsyx3mdxqh"]
 
 [ext_resource type="Script" path="res://scripts/gui_manager.gd" id="1_igwfx"]
 [ext_resource type="Script" path="res://resources/block.gd" id="2_hnmho"]
@@ -10,10 +10,54 @@
 [ext_resource type="Resource" uid="uid://cti3hvu86lghq" path="res://resources/block_3.tres" id="5_aoe15"]
 [ext_resource type="Texture2D" uid="uid://ovp7w5io5fsu" path="res://assets/flask_half.png" id="6_erc6b"]
 [ext_resource type="Resource" uid="uid://c62wyn0spwnsj" path="res://resources/block_4.tres" id="6_pi2e3"]
+[ext_resource type="StyleBox" uid="uid://6kf7k84ikq4a" path="res://theme/panel_container.tres" id="7_6usfr"]
 [ext_resource type="Texture2D" uid="uid://b6j74md1sh0g1" path="res://assets/suit_hearts.png" id="7_fmyhs"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksixv"]
-bg_color = Color(0.216843, 0.305717, 0.202858, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_s5wwf"]
+font_size = 24
+
+[sub_resource type="FontFile" id="FontFile_px3wo"]
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/268/0/ascent = 0.0
+cache/0/268/0/descent = 0.0
+cache/0/268/0/underline_position = 0.0
+cache/0/268/0/underline_thickness = 0.0
+cache/0/268/0/scale = 1.0
+cache/0/38/0/ascent = 0.0
+cache/0/38/0/descent = 0.0
+cache/0/38/0/underline_position = 0.0
+cache/0/38/0/underline_thickness = 0.0
+cache/0/38/0/scale = 1.0
+cache/0/69/0/ascent = 0.0
+cache/0/69/0/descent = 0.0
+cache/0/69/0/underline_position = 0.0
+cache/0/69/0/underline_thickness = 0.0
+cache/0/69/0/scale = 1.0
+cache/0/42/0/ascent = 0.0
+cache/0/42/0/descent = 0.0
+cache/0/42/0/underline_position = 0.0
+cache/0/42/0/underline_thickness = 0.0
+cache/0/42/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qplch"]
+font = SubResource("FontFile_px3wo")
+font_size = 42
+outline_size = 10
+outline_color = Color(0.68, 0.1836, 0.200147, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4mrnd"]
+font_size = 70
+outline_size = 10
+outline_color = Color(0.68, 0.1836, 0.200147, 1)
 
 [node name="GuiManager" type="Control"]
 layout_mode = 3
@@ -25,8 +69,10 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_igwfx")
 blocks = Array[ExtResource("2_hnmho")]([ExtResource("3_vlsgm"), ExtResource("4_l1p0w"), ExtResource("5_aoe15"), ExtResource("6_pi2e3")])
+timeout = 99
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Realtime" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -35,32 +81,33 @@ offset_left = -145.0
 offset_bottom = 231.0
 grow_horizontal = 0
 mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="Realtime"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_6usfr")
+
+[node name="MarginContainer" type="MarginContainer" parent="Realtime/PanelContainer"]
+layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Realtime/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="PopulationContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PopulationContainer" type="HBoxContainer" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
+[node name="TextureRect" type="TextureRect" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_vertical = 4
@@ -68,7 +115,7 @@ texture = ExtResource("2_k12re")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="PopulationLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
+[node name="PopulationLabel" type="RichTextLabel" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/PopulationContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -80,11 +127,11 @@ scroll_active = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="IncomeContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="IncomeContainer" type="HBoxContainer" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
+[node name="TextureRect" type="TextureRect" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -93,7 +140,7 @@ texture = ExtResource("4_ym7cc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="CostLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
+[node name="CostLabel" type="RichTextLabel" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/IncomeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -106,11 +153,11 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="FoodContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="FoodContainer" type="HBoxContainer" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
+[node name="TextureRect" type="TextureRect" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -119,7 +166,7 @@ texture = ExtResource("5_7p4cl")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="FoodLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
+[node name="FoodLabel" type="RichTextLabel" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/FoodContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -132,11 +179,11 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="WaterContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="WaterContainer" type="HBoxContainer" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
+[node name="TextureRect" type="TextureRect" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -145,7 +192,7 @@ texture = ExtResource("6_erc6b")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="WaterLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
+[node name="WaterLabel" type="RichTextLabel" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/WaterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -158,11 +205,11 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="FunContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="FunContainer" type="HBoxContainer" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
+[node name="TextureRect" type="TextureRect" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -171,7 +218,7 @@ texture = ExtResource("7_fmyhs")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="FunLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
+[node name="FunLabel" type="RichTextLabel" parent="Realtime/PanelContainer/MarginContainer/VBoxContainer/FunContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -184,33 +231,112 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="Choose" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = -567.0
-offset_right = 180.0
-grow_vertical = 0
+offset_right = 60.0
+grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="Choose"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_ksixv")
+theme_override_styles/panel = ExtResource("7_6usfr")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Choose/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxBlockSelector" type="VBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer"]
+[node name="HBoxBlockSelector" type="VBoxContainer" parent="Choose/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
+
+[node name="Message" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="Message"]
+custom_minimum_size = Vector2(600, 125)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_6usfr")
+
+[node name="MarginContainer" type="MarginContainer" parent="Message/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Message/Panel/MarginContainer"]
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Build your raccoon tower by stacking the various blocks, but be careful with the balance of money, food, water, and fun to make it thrive!"
+label_settings = SubResource("LabelSettings_s5wwf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 35
+
+[node name="Alert" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Alert"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Alert/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Insufficient resources, the raccoons will rebel soon!"
+label_settings = SubResource("LabelSettings_qplch")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="Alert/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "99"
+label_settings = SubResource("LabelSettings_4mrnd")
+horizontal_alignment = 1
+vertical_alignment = 1
